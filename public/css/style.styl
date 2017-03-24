@@ -1,0 +1,267 @@
+*
+  transition all linear .2s
+body
+  margin 0
+  padding 0
+  font-family Tahoma
+
+header
+  width 100%
+  display none !important
+  @media (min-width: 768px)
+    display flex !important
+    justify-content space-around
+  @media (min-width: 992px)
+    height 110px
+  @media (min-width: 1200px)
+    height 130px
+  &>div
+    display inline-block
+  .logo-space
+    height 100%
+    text-align center
+    .main-title
+      font-weight 400
+      text-transform uppercase
+      font-family "Bask Old Face"
+      @media (min-width: 768px)
+        font-size 30px
+        line-height 20px
+        margin 14px 0 0 0
+      @media (min-width: 992px)
+        height 34px
+        margin 26px 0 0 0
+        font-size 42px
+        line-height 28px
+      @media (min-width: 1200px)
+        height 34px
+        margin 38px 0 0 0
+        font-size 48px
+        line-height 28px
+
+    .main-subtitle
+      font-weight 400
+      font-family "Times  New  Roman"
+      @media (min-width: 768px)
+        font-size 14px
+        line-height 10px
+      @media (min-width: 992px)
+        height 26px
+        margin 0px 0 0 0
+        font-size 18px
+        line-height 32px
+      @media (min-width: 1200px)
+        font-size 28px
+        line-height 28px
+  .slogan
+    font-weight 400
+    text-transform uppercase
+    @media (min-width: 768px)
+      height 5px
+      font-size 12px
+      margin 13px 0 0 0
+    @media (min-width: 992px)
+      height 15px
+      font-size 18px
+      margin 22px 0 0 0
+    @media (min-width: 1200px)
+      height 19px
+      font-size 19px
+      margin 30px 0 0 0
+  nav
+    font-weight 400
+    @media (min-width: 768px)
+      height 12px
+      margin 23px 0 0 0
+      font-size 14px
+    @media (min-width: 992px)
+      font-size 18px
+    @media (min-width: 1200px)
+      height 19px
+    ul
+      list-style none
+      display flex
+      justify-content space-between
+      padding-left 0
+      li
+        display inline
+        a
+          color black
+          text-decoration none
+          &:hover
+            color #999
+  .numbers
+    display flex
+    justify-content space-around
+    flex-direction column
+    background-image url("/img/phone.png")
+    background-repeat no-repeat
+    background-position 0 5px
+    font-family Arial
+    color #999
+    @media (min-width: 768px)
+      width 110px
+      margin 18px 0 15px 10px
+      padding 3px 0 0 35px
+      background-size 30px auto
+      font-size 12px
+      height 30px
+    @media (min-width: 992px)
+      width 130px
+      margin 30px 0 30px 0px
+      padding 2px 0 0 50px
+      background-size 40px auto
+      font-size 14px
+      height 39px
+    @media (min-width: 1200px)
+      width 170px
+      margin 30px 0 30px 0px
+      padding 0 0 0 60px
+      background-size 50px auto
+      font-size 17px
+      height 50px
+    .phone
+      @media (min-width: 768px)
+        height: 10px
+        margin -5px 0 0 0
+
+#header
+  position fixed
+  background rgba(255,255,255,.8)
+  &.compressed
+    background #fff
+    box-shadow 1px -3px 10px #000
+    @media (min-width: 992px)
+      height 80px
+    .logo-space
+      .main-title
+        @media (min-width: 992px)
+          height 34px
+          margin 14px 0 0 0
+          font-size 28px
+          line-height 28px
+      .main-subtitle
+        @media (min-width: 992px)
+          height 18px
+          margin 0 0 0 0
+          font-size 20px
+          line-height 18px
+    .slogan
+      transform translateY(-300px)
+      height 0
+      margin 0
+      opacity 0
+    nav
+      @media (min-width: 992px)
+        line-height 30px
+        font-size 18px
+        font-weight 400
+    .numbers
+      @media (min-width: 992px)
+        width 100px
+        margin 25px 0 0 0
+        background-size 30px auto
+        padding 0 0 40px 55px
+        height 30px
+      .phone
+        @media (min-width: 992px)
+          margin 5px 0 0 -20px
+          height 13px
+          font-size 13px
+.mobile-menu
+  @media (min-width: 768px)
+    display none
+  filter url("#shadowed-goo")
+  position absolute
+  left 50%
+  margin-left -80px
+  padding-top 20px
+  padding-left 80px
+  width 650px
+  height 150px
+  box-sizing border-box
+  font-size 20px
+  text-align left
+  .menu-item, .menu-open-button
+      background #00bcd4
+      border-radius 100%
+      width 80px
+      height 80px
+      margin-left -40px
+      position absolute
+      top 20px
+      color white
+      text-align center
+      line-height 80px
+      transform translate3d(0, 0, 0)
+      transition transform ease-out 200ms
+  .menu-open
+      display none
+      &:checked
+          & + .menu-open-button
+              transition-timing-function linear
+              transition-duration 200ms
+              transform scale(0.8, 0.8) translate3d(0, 0, 0)
+              .hamburger-1
+                  transform translate3d(0, 0, 0) rotate(45deg)
+              .hamburger-2
+                  transform translate3d(0, 0, 0) scale(0.1, 1)
+              .hamburger-3
+                  transform translate3d(0, 0, 0) rotate(-45deg)
+          & ~ .menu-item
+              transition-timing-function cubic-bezier(0.165, 0.84, 0.44, 1)
+              &:nth-child(3)
+                  transition-duration 190ms
+                  transform translate3d(0, 110px, 0)
+              &:nth-child(4)
+                  transition-duration 290ms
+                  transform translate3d(0, 220px, 0)
+              &:nth-child(5)
+                  transition-duration 390ms
+                  transform translate3d(0, 330px, 0)
+              &:nth-child(6)
+                  transition-duration 490ms
+                  transform translate3d(0, 440px, 0)
+
+  .hamburger
+      width 25px
+      height 3px
+      background white
+      display block
+      position absolute
+      top 50%
+      left 50%
+      margin-left -12.5px
+      margin-top -1.5px
+      transition transform 200ms
+
+  .hamburger-1
+      transform translate3d(0, -8px, 0)
+
+  .hamburger-2
+      transform translate3d(0, 0, 0)
+
+  .hamburger-3
+      transform translate3d(0, 8px, 0)
+
+  .menu-item
+      &:hover
+          background white
+          color #00bcd4
+      &:nth-child(3)
+          transition-duration 180ms
+      &:nth-child(4)
+          transition-duration 180ms
+      &:nth-child(5)
+          transition-duration 180ms
+      &:nth-child(6)
+          transition-duration 180ms
+
+  .menu-open-button
+      z-index 2
+      transition-timing-function cubic-bezier(0.175, 0.885, 0.32, 1.275)
+      transition-duration 400ms
+      transform scale(1.1, 1.1) translate3d(0, 0, 0)
+      cursor pointer
+      &:hover
+          transform scale(1.2, 1.2) translate3d(0, 0, 0)

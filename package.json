@@ -1,0 +1,17 @@
+{
+  "name": "kokon.co.ua",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "WhoseSomebody <whosesomebody@gmail.com>",
+  "license": "GPL",
+  "dependencies": {
+    "express": "^4.15.2",
+    "express-stylus": "^0.1.0",
+    "nib": "^1.1.2",
+    "pug": "^2.0.0-beta11",
+    "stylus": "^0.54.5"
+  },
+  "engines": {
+    "node": "7.7.2"
+  }
+}

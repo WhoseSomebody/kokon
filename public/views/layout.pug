@@ -1,0 +1,113 @@
+doctype html
+html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
+  head
+    meta(charset="UTF-8")
+    link(rel='apple-touch-icon', sizes='57x57', href='img/favicons/apple-icon-57x57.png')
+    link(rel='apple-touch-icon', sizes='60x60', href='img/favicons/apple-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='img/favicons/apple-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href='img/favicons/apple-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='img/favicons/apple-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href='img/favicons/apple-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='img/favicons/apple-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='img/favicons/apple-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='img/favicons/apple-icon-180x180.png')
+    link(rel='icon', type='image/png', sizes='192x192', href='img/favicons/android-icon-192x192.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='img/favicons/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='96x96', href='img/favicons/favicon-96x96.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='img/favicons/favicon-16x16.png')
+    link(rel='manifest', href='img/favicons/manifest.json')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='img/favicons/ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+    block title
+      title Студия "Кокон"
+    link(rel="stylesheet" type="text/css" href='css/style.css')
+    block head-link
+    script(type="text/javascript" src="js/jquery-3.1.1.min.js")
+  body
+    header#header
+      .logo-space
+        h1.main-title KOKON
+        h2.main-subtitle Costume, Makeup & Hairstyle
+        
+      div
+        .slogan Профессионально подойдем к работе любой сложности
+        nav
+          ul
+            li
+              a(href="/#about").scroll о нас
+            li
+              a(href="/#services").scroll услуги
+            li
+              a(href="/#benefits").scroll преимущества
+            li
+              a(href="/#feedback").scroll контакты
+            li
+              a(href="/#prices").scroll цены
+      .numbers
+        .phone +38 067 406 82 44
+        .phone +38 067 985 48 25
+    nav.mobile-menu
+      input#menu-open.menu-open(type='checkbox', href='#', name='menu-open')
+      label.menu-open-button(for='menu-open')
+        span.hamburger.hamburger-1
+        span.hamburger.hamburger-2
+        span.hamburger.hamburger-3
+      a(href="/#about").scroll.menu-item о нас   
+      a(href="/#services").scroll.menu-item услуги
+      a(href="/#benefits").scroll.menu-item преимущества
+      a(href="/#feedback").scroll.menu-item контакты
+      a(href="/#prices").scroll.menu-item цены 
+    
+    #content
+      block content
+    footer
+      .logo-space
+        h1.main-title KOKON
+        h2.main-subtitle Costume, makeup & hairstylev
+      div
+        .slogan Профессионально подойдем к работе любой сложности
+        nav
+          ul
+            li
+              a(href="/#about") о нас
+            li
+              a(href="/#services") услуги
+            li
+              a(href="/#benefits") преимущества
+            li
+              a(href="/#feedback") контакты
+            li
+              a(href="/#prices") цены
+      .numbers
+        .phone +38 067 406 82 44
+        .phone +38 067 985 48 25
+  script(async).
+    $( document ).ready(function () {
+      let hashTagActive = "";
+      $(".scroll").on("click touchstart", function (event) {
+        if (hashTagActive != this.hash) {
+          event.preventDefault();
+          let dest = 0;
+          if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+            dest = $(document).height() - $(window).height();
+          } else {
+            dest = $(this.hash).offset().top;
+          }
+          $('html,body').animate({
+            scrollTop: dest
+          }, 500, 'swing');
+          hashTagActive = this.hash;
+        }
+      });
+
+      let wrap = $(document);
+      wrap.on("scroll", function (e) {
+        if ($(document).scrollTop() > 147) {
+          $("#header").addClass("compressed");
+        } else {
+          $("#header").removeClass("compressed");
+        }
+
+      });
+    });
