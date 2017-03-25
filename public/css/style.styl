@@ -35,13 +35,13 @@ body
 header
   z-index 100
   width 100%
-  display none !important
-  @media (min-width: 768px)
-    display flex !important
+  display none
+  @media only screen and (min-width: 768px)
+    display flex 
     justify-content space-around
-  @media (min-width: 992px)
+  @media only screen and (min-width: 992px)
     height 110px
-  @media (min-width: 1200px)
+  @media only screen and (min-width: 1200px)
     height 130px
   &>div
     display inline-block
@@ -383,7 +383,7 @@ footer
       &:hover
           // transform scale(1.2, 1.2) translate3d(0, 0, 0)
 #header-mobile
-  @media (min-width: 768px)
+  @media only screen and (min-width: 768px)
     display: none
   height: 36px
   background: none
