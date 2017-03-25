@@ -4,59 +4,100 @@ block head-link
   link(rel="stylesheet" type="text/css" href='css/index.css')
 block content
     section#image
-      img(src="img/main-bckg.png" alt='Студия "Кокон". Главная страница.')
+      .welcome-message
+        | Если Вы хотите перевоплотиться, мы с радостью поможем это сделать!
+      .scroll-down  
+        .fa-stack.fa-2x
+          a(href="/#about").scroll.menu-item
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-angle-double-down.fa-stack-1x.text-primary
     section#about
+      h1 Студия "Кокон"
+      hr
       p
-        | Студия "Кокон" - это команда профессионалов с опытом работы более 10 лет в шоу-бизнессе,
+        | это команда профессионалов с опытом работы более 10 лет в шоу-бизнессе,
         | кино, рекламе, ТВ. Профессионально подойдем к работе любой сложности для корпоративов,
         | свадебных церемоний, фотосессий, костюмированных праздников
         | (с использованием париков и спецгрима).
       span
         img(src="img/about-imgs.png" alt='О нас. Студия "Кокон".')
       p
-        | Можем работать как в комплексе (костюм, грим, прически),
+        | Работаем как в комплексе (костюм, грим, прически),
         | так и по каждой услуге отдельно.
     section#services
       h2 ПОРТФОЛИО
+      hr
       .categories
-        div
-          img(src="img/tv.jpg" alt='Студия "Кокон". Телевидение.')
-          h3 Телевидение
-        div
-          img(src="img/movie.jpg" alt='Студия "Кокон". Кино.')
-          h3 Кино
-        div
-          img(src="img/corporate.jpg" alt='Студия "Кокон". Корпоратив.')
-          h3 Корпоратив
-        div
-          img(src="img/wedding.jpg" alt='Студия "Кокон". Свадьба.')
-          h3 Свадьба
-        div
-          img(src="img/special-makeup.jpg" alt='Студия "Кокон". Спецгрим.')
-          h3 Спецгрим
-        div
-          img(src="img/show-business.jpg" alt='Студия "Кокон". Шоу-бизнес.')
-          h3 Шоу-бизнес
+        .wrapper
+          .overlay
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/tv.jpg" alt='Студия "Кокон". Телевидение.')
+            h3.title
+              | Телевидение
+        .wrapper
+          .overlay
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/movie.jpg" alt='Студия "Кокон". Кино.')
+            h3.title
+              | Кино
+        .wrapper
+          .overlay
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/corporate.jpg" alt='Студия "Кокон". Корпоратив.')
+            h3.title
+              | Корпоратив
+        .wrapper  
+          .overlay
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/wedding.jpg" alt='Студия "Кокон". Свадьба.')
+            h3.title
+              | Свадьба
+        .wrapper    
+          .overlay    
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/special-makeup.jpg" alt='Студия "Кокон". Спецгрим.')
+            h3.title
+              | Спецгрим
+        .wrapper    
+          .overlay    
+          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
+            img(src="img/show-business.jpg" alt='Студия "Кокон". Шоу-бизнес.')
+            h3.title
+              | Шоу-бизнес
+              
     section#benefits
       h2 ПРЕИМУЩЕСТВА РАБОТЫ С НАМИ:
+      hr
       div
-        #departure
+        p#departure
           | работа на выезд  (по всей Украине)
-        #quality
+        p#quality
           | гарантия качества
-        #costumes
+        p#costumes
           | свой костюмено-пошивочный цех
     section#collective-work
       h2 КОЛЛЕКТИВНАЯ РАБОТА
+      hr
       p
         | Наша команда быстро и качественно работает на мероприятиях,
         | где необходимо в сжатые строки обслужить большое количество людей.
       .logo-inner
         h2.main-title KOKON
-        h3.main-subtitle Costume, makeup & hairstyle
+        h3.main-subtitle Costume, Makeup & Hairstyle
     section#feedback
       h2 ОСТАЛИСЬ ВОПРОСЫ?
+      hr
       form
-        input(type="text" placeholder="ИМЯ/ФАМИЛИЯ" name="name")#name
-        input(type="tel" placeholder="(0XX) XXX-XX-XX" title="(0XX) XXX-XX-XX" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="")#number
-        input(type="submit" value="Отправить")
+        ul
+          li
+            label(for="name") Имя
+            input(type="text" name="name")#name
+            span Как к Вам обращаться?
+          li
+            label(for="number") Номер Телефона
+            input(type="tel" title="Номер телефона" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="")#number
+            span Формата (012) 345-67-89
+          li    
+            input(type="submit" value="Отправить") 
+      note Оставьте свой номер и мы Вам обязательно перезвоним!
+            

@@ -16,37 +16,43 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     link(rel='icon', type='image/png', sizes='96x96', href='img/favicons/favicon-96x96.png')
     link(rel='icon', type='image/png', sizes='16x16', href='img/favicons/favicon-16x16.png')
     link(rel='manifest', href='img/favicons/manifest.json')
+    link(href="https://fonts.googleapis.com/css?family=Exo+2:200,300,300i,400,400i,600&amp;subset=cyrillic" rel="stylesheet")
     meta(name='msapplication-TileColor', content='#ffffff')
     meta(name='msapplication-TileImage', content='img/favicons/ms-icon-144x144.png')
     meta(name='theme-color', content='#ffffff')
     block title
       title Студия "Кокон"
+    link(rel="stylesheet" type="text/css" href='font-awesome/css/font-awesome.min.css')
     link(rel="stylesheet" type="text/css" href='css/style.css')
     block head-link
     script(type="text/javascript" src="js/jquery-3.1.1.min.js")
   body
     header#header
-      .logo-space
-        h1.main-title KOKON
-        h2.main-subtitle Costume, Makeup & Hairstyle
+      a(href="#image").logo-space.scroll 
+        h2.main-title KOKON
+        h3.main-subtitle Costume, Makeup & Hairstyle
         
       div
         .slogan Профессионально подойдем к работе любой сложности
-        nav
+        nav.cl-effect-11
           ul
             li
-              a(href="/#about").scroll о нас
+              a(href="/#about" data-hover="о нас").scroll о нас
             li
-              a(href="/#services").scroll услуги
+              a(href="/#services" data-hover="услуги").scroll услуги
             li
-              a(href="/#benefits").scroll преимущества
+              a(href="/#benefits" data-hover="преимущества").scroll преимущества
             li
-              a(href="/#feedback").scroll контакты
+              a(href="/#feedback" data-hover="контакты").scroll контакты
             li
-              a(href="/#prices").scroll цены
+              a(href="/#prices" data-hover="цены").scroll цены
       .numbers
         .phone +38 067 406 82 44
         .phone +38 067 985 48 25
+    #header-mobile    
+      a(href="#").logo-space
+        .main-title KOKON
+        .main-subtitle Costume, Makeup & Hairstyle
     nav.mobile-menu
       input#menu-open.menu-open(type='checkbox', href='#', name='menu-open')
       label.menu-open-button(for='menu-open')
@@ -55,59 +61,67 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
         span.hamburger.hamburger-3
       a(href="/#about").scroll.menu-item о нас   
       a(href="/#services").scroll.menu-item услуги
-      a(href="/#benefits").scroll.menu-item преимущества
       a(href="/#feedback").scroll.menu-item контакты
       a(href="/#prices").scroll.menu-item цены 
     
     #content
       block content
     footer
+      .copyright
+        | Copyright © 2017
+        | COCON.CO.UA
+      .social
+        a(href="#" title="Наш YouTube канал")
+          <i class="fa fa-youtube" aria-hidden="true"></i>  
+        a(href="#" title="Наш Facebook профиль")
+          <i class="fa fa-facebook-official" aria-hidden="true"></i>  
+        a(href="#" title="Наш Instagram профиль")
+          <i class="fa fa-instagram" aria-hidden="true"></i>    
       .logo-space
-        h1.main-title KOKON
-        h2.main-subtitle Costume, makeup & hairstylev
-      div
-        .slogan Профессионально подойдем к работе любой сложности
-        nav
-          ul
-            li
-              a(href="/#about") о нас
-            li
-              a(href="/#services") услуги
-            li
-              a(href="/#benefits") преимущества
-            li
-              a(href="/#feedback") контакты
-            li
-              a(href="/#prices") цены
-      .numbers
-        .phone +38 067 406 82 44
-        .phone +38 067 985 48 25
+        small студия
+        .main-title KOKON
+         
   script(async).
     $( document ).ready(function () {
       let hashTagActive = "";
+      let headerHeight = $( document ).width() < 768 ? 0 : $( document ).width() < 992 ? 70 : 80
+      $( window ).resize(function() {
+        headerHeight = $( document ).width() < 768 ? 0 : $( document ).width() < 992 ? 70 : 80
+      })
       $(".scroll").on("click touchstart", function (event) {
-        if (hashTagActive != this.hash) {
-          event.preventDefault();
-          let dest = 0;
-          if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-            dest = $(document).height() - $(window).height();
-          } else {
-            dest = $(this.hash).offset().top;
-          }
-          $('html,body').animate({
-            scrollTop: dest
-          }, 500, 'swing');
-          hashTagActive = this.hash;
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+            event.preventDefault();
+            let dest = 0;
+            if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+              dest = $(document).height() - $(window).height();
+            } else {
+              dest = $(this.hash).offset().top;
+            }
+            $('html,body').animate({
+              scrollTop: dest - headerHeight
+            }, 1000);
+            hashTagActive = this.hash;
         }
       });
-
-      let wrap = $(document);
-      wrap.on("scroll", function (e) {
+      
+      $(window).click(function() {
+        $('.menu-open').prop('checked', false);
+      });
+      
+      $('.menu-open').click(function(event){
+          event.stopPropagation();
+      });
+      
+      function headerMode() {
         if ($(document).scrollTop() > 147) {
           $("#header").addClass("compressed");
         } else {
           $("#header").removeClass("compressed");
         }
-
+      }
+      headerMode();
+      let wrap = $(document);
+      wrap.on("scroll", function (e) {
+        headerMode();
       });
     });

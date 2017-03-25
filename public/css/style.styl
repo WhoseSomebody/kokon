@@ -1,11 +1,39 @@
 *
   transition all linear .2s
+::-webkit-scrollbar-track
+	-webkit-box-shadow inset 0 0 6px rgba(0,0,0,0.3)
+	background-color #F5F5F5
+	border-radius 0px
+
+::-webkit-scrollbar
+	width 5px;
+	background-color #F5F5F5
+  cursor pointer
+
+::-webkit-scrollbar-thumb
+	border-radius 5px
+	background-image -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, #000),
+									   color-stop(0.72, #000),
+									   color-stop(0.86, #000));
 body
   margin 0
   padding 0
-  font-family Tahoma
+  // font-family: 'Exo 2'
+  // font-weight: 200
+  // letter-spacing: .5px
+  font-family: 'geometria-light'
+  font-weight: 200
+  // letter-spacing: .5px
+  section
+    letter-spacing: .5px
 
+#content
+  overflow hidden
 header
+  z-index 100
   width 100%
   display none !important
   @media (min-width: 768px)
@@ -17,11 +45,17 @@ header
     height 130px
   &>div
     display inline-block
+  a
+    display inline-block
+    outline none
+    text-decoration none
+    text-shadow 0 0 1px rgba(255,255,255,0.3)
+    color black
   .logo-space
     height 100%
     text-align center
     .main-title
-      font-weight 400
+      font-weight 300
       text-transform uppercase
       font-family "Bask Old Face"
       @media (min-width: 768px)
@@ -40,18 +74,19 @@ header
         line-height 28px
 
     .main-subtitle
-      font-weight 400
-      font-family "Times  New  Roman"
+      font-weight 200
+      letter-spacing: 0px
+      // font-family "Times  New  Roman"
       @media (min-width: 768px)
-        font-size 14px
+        font-size 7.5px
         line-height 10px
       @media (min-width: 992px)
         height 26px
         margin 0px 0 0 0
-        font-size 18px
+        font-size 11px
         line-height 32px
       @media (min-width: 1200px)
-        font-size 28px
+        font-size 12.5px
         line-height 28px
   .slogan
     font-weight 400
@@ -86,10 +121,27 @@ header
       li
         display inline
         a
-          color black
+          position relative
+          display inline-block
+          outline none
           text-decoration none
-          &:hover
-            color #999
+          text-shadow 0 0 1px rgba(255,255,255,0.3)
+          color black
+          &::before
+            position absolute
+            top 0
+            left 0
+            overflow hidden
+            max-width 0
+            border-bottom 2px solid #000
+            padding-bottom 2px
+            content attr(data-hover)
+            transition max-width 0.2s
+            max-height 16px
+            @media (min-width: 992px)
+              max-height 22px
+          &:hover::before
+            max-width 100%
   .numbers
     display flex
     justify-content space-around
@@ -108,7 +160,7 @@ header
       height 30px
     @media (min-width: 992px)
       width 130px
-      margin 30px 0 30px 0px
+      margin 35px 0 30px 0px
       padding 2px 0 0 50px
       background-size 40px auto
       font-size 14px
@@ -144,8 +196,8 @@ header
         @media (min-width: 992px)
           height 18px
           margin 0 0 0 0
-          font-size 20px
-          line-height 18px
+          font-size 7px
+          line-height 10px
     .slogan
       transform translateY(-300px)
       height 0
@@ -168,40 +220,92 @@ header
           margin 5px 0 0 -20px
           height 13px
           font-size 13px
+footer
+  background: rgba(0, 0, 0, 0.1);
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-flow row wrap
+  padding: 5px 20px
+  box-sizing: border-box
+  text-align: center
+  flex-direction: column-reverse
+  @media (min-width: 768px)
+    flex-direction: row
+  .copyright
+    font-size: 12px
+  .social
+    a
+      text-decoration: none
+      color: rgba(0, 0, 0, 0.7)
+      font-size: 29px
+      margin: 0 10px
+      &:first-child
+        font-size: 24px
+        paddng-top: 8px
+      &:hover
+        color: rgba(0, 0, 0, 0.4)
+  .logo-space
+    .main-title
+      font-weight 300
+      text-transform uppercase
+      font-family "Bask Old Face"
+      font-size 24px
+      letter-spacing 2px
+  div
+    flex 1
+    flex-basis 100%
+    @media (min-width: 768px)
+      flex-basis 33%
+      &.logo-space
+        text-align: right
+      &.copyright
+        text-align: left
 .mobile-menu
+  z-index: 100
   @media (min-width: 768px)
     display none
-  filter url("#shadowed-goo")
-  position absolute
-  left 50%
-  margin-left -80px
-  padding-top 20px
-  padding-left 80px
-  width 650px
+  position fixed
+  left: 50px
+  top: -10px
   height 150px
   box-sizing border-box
-  font-size 20px
-  text-align left
+  font-size 3px
+  .menu-open-button
+      width 41px
+      height 37px
+      background #000
+      border-radius: 100%
   .menu-item, .menu-open-button
-      background #00bcd4
-      border-radius 100%
-      width 80px
-      height 80px
-      margin-left -40px
+      margin-left -26px
       position absolute
-      top 20px
+      top 15px
       color white
       text-align center
-      line-height 80px
+      line-height 25px
       transform translate3d(0, 0, 0)
       transition transform ease-out 200ms
+      overflow: hidden
+  .menu-item
+      text-align: center
+      color #000
+      width 0
+      height: 26px
+      text-decoration: none
+      padding: 0px 4px
+      font-weight: 600
+      letter-spacing: 1px
+      margin: 1px -49px
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 25px
+      visibility: hidden
+
   .menu-open
       display none
       &:checked
           & + .menu-open-button
               transition-timing-function linear
               transition-duration 200ms
-              transform scale(0.8, 0.8) translate3d(0, 0, 0)
               .hamburger-1
                   transform translate3d(0, 0, 0) rotate(45deg)
               .hamburger-2
@@ -209,30 +313,34 @@ header
               .hamburger-3
                   transform translate3d(0, 0, 0) rotate(-45deg)
           & ~ .menu-item
+              font-size 15px
+              width 83px
+              visibility: visible
               transition-timing-function cubic-bezier(0.165, 0.84, 0.44, 1)
               &:nth-child(3)
                   transition-duration 190ms
-                  transform translate3d(0, 110px, 0)
+                  transform translate3d(0, 50px, 0)
               &:nth-child(4)
                   transition-duration 290ms
-                  transform translate3d(0, 220px, 0)
+                  transform translate3d(0, 85px, 0)
               &:nth-child(5)
                   transition-duration 390ms
-                  transform translate3d(0, 330px, 0)
+                  transform translate3d(0, 120px, 0)
               &:nth-child(6)
                   transition-duration 490ms
-                  transform translate3d(0, 440px, 0)
+                  transform translate3d(0, 155px, 0)
+
 
   .hamburger
-      width 25px
-      height 3px
-      background white
+      width 20px
+      height 2px
+      background-color: #fff
       display block
       position absolute
       top 50%
       left 50%
-      margin-left -12.5px
-      margin-top -1.5px
+      margin-left -10.5px
+      margin-top -1px
       transition transform 200ms
 
   .hamburger-1
@@ -246,8 +354,7 @@ header
 
   .menu-item
       &:hover
-          background white
-          color #00bcd4
+          color rgba(215, 197, 187, 1)
       &:nth-child(3)
           transition-duration 180ms
       &:nth-child(4)
@@ -264,4 +371,48 @@ header
       transform scale(1.1, 1.1) translate3d(0, 0, 0)
       cursor pointer
       &:hover
-          transform scale(1.2, 1.2) translate3d(0, 0, 0)
+          // transform scale(1.2, 1.2) translate3d(0, 0, 0)
+#header-mobile
+  @media (min-width: 768px)
+    display: none
+  height: 36px
+  background: none
+  position: absolute
+  width: 100%
+  a
+    float: right
+    text-align: center
+    text-decoration: none
+    color: rgba(255,255,255,0.95)
+    text-shadow 0px 1px 0px rgba(8, 8, 8, 0.23)
+    margin: 10px
+  .main-title
+    font-weight 600
+    text-transform uppercase
+    font-family "Bask Old Face"
+    font-size 24px
+  .main-subtitle
+    font-size 6.5px
+
+
+hr
+  margin-top: 20px
+  margin-bottom: 20px
+  border: 0
+  border-top: 1px solid #aeaeab
+  max-width: 100px
+
+@font-face{
+    font-family: 'exo'
+    src: url('../fonts/exo.otf')
+    font-weight: normal
+    font-style: normal
+  }
+@font-face{
+    font-family: 'amsdam'
+    src: url('/fonts/amsdam.ttf')
+  }
+@font-face{
+    font-family: 'geometria-light'
+    src: url('/fonts/geometria-light.otf')
+  }
