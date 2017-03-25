@@ -28,43 +28,15 @@ block content
       h2 ПОРТФОЛИО
       hr
       .categories
-        .wrapper
-          .overlay
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/tv.jpg" alt='Студия "Кокон". Телевидение.')
-            h3.title
-              | Телевидение
-        .wrapper
-          .overlay
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/movie.jpg" alt='Студия "Кокон". Кино.')
-            h3.title
-              | Кино
-        .wrapper
-          .overlay
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/corporate.jpg" alt='Студия "Кокон". Корпоратив.')
-            h3.title
-              | Корпоратив
-        .wrapper  
-          .overlay
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/wedding.jpg" alt='Студия "Кокон". Свадьба.')
-            h3.title
-              | Свадьба
-        .wrapper    
-          .overlay    
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/special-makeup.jpg" alt='Студия "Кокон". Спецгрим.')
-            h3.title
-              | Спецгрим
-        .wrapper    
-          .overlay    
-          a(href="#" data-description="Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль. ")
-            img(src="img/show-business.jpg" alt='Студия "Кокон". Шоу-бизнес.')
-            h3.title
-              | Шоу-бизнес
-              
+        - var names = ['Телевидение', 'Кино', 'Корпоратив', 'Свадьба', 'Спецгрим', 'Шоу-бизнес']
+        - var src = ['/img/tv.jpg', '/img/movie.jpg', '/img/corporate.jpg', '/img/wedding.jpg', '/img/special-makeup.jpg', '/img/show-business.jpg']
+        - for (var i = 0; i < 6; i++) {
+          .wrapper
+            a(href="#")
+              img(src=src[i], alt='Студия "Кокон".' + names[i] + '.')
+              h3.title #{names[i]}
+              .overlay  
+        - }
     section#benefits
       h2 ПРЕИМУЩЕСТВА РАБОТЫ С НАМИ:
       hr
@@ -74,7 +46,8 @@ block content
         p#quality
           | гарантия качества
         p#costumes
-          | свой костюмено-пошивочный цех
+          span
+            | свой костюмено-пошивочный цех
     section#collective-work
       h2 КОЛЛЕКТИВНАЯ РАБОТА
       hr
@@ -90,14 +63,35 @@ block content
       form
         ul
           li
-            label(for="name") Имя
-            input(type="text" name="name")#name
-            span Как к Вам обращаться?
+            input(type="text" name="name" placeholder="Имя")#name
           li
-            label(for="number") Номер Телефона
-            input(type="tel" title="Номер телефона" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="")#number
-            span Формата (012) 345-67-89
+            input(type="tel" maxlength="15" title="Номер телефона" placeholder="(012) 345-67-89" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);")#number
           li    
             input(type="submit" value="Отправить") 
       note Оставьте свой номер и мы Вам обязательно перезвоним!
-            
+    script.
+      let number = $('#number');
+      $(function() {
+        let regExp = /[^0-9\b\f\r]/i;
+        $('#feedback input[type="tel"]').on('keydown keyup', function(e) {
+          let value = String.fromCharCode(e.which) || e.key;
+          if (regExp.test(value) && value != 't') {
+            e.preventDefault();
+            return false;
+          }
+          
+          let number = $(this).val().length
+          let content = $(this).val()
+          if (number == 1 && content !== "(")
+              $(this).val('(' + content)
+          else if (number == 5 && content[4] !== ")")
+            $(this).val(content.substring(0, 4) + ') ' + content.substring(4, content.length))
+          else if (number == 6 && content[5] !== " ") 
+            $(this).val(content.substring(0, 5) + ' ' + content.substring(5, content.length))
+          else if (number == 10 && content[9] !== "-") 
+            $(this).val(content.substring(0, 9) + '-' + content.substring(9, content.length))
+          else if (number == 13 && content[12] !== "-") 
+            $(this).val(content.substring(0, 12) + '-' + content.substring(12, content.length))  
+        });
+      });
+              

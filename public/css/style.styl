@@ -234,24 +234,34 @@ footer
     flex-direction: row
   .copyright
     font-size: 12px
-  .social
     a
       text-decoration: none
-      color: rgba(0, 0, 0, 0.7)
+      color: rgba(0, 0, 0, 0.4)
+      &:hover
+        color: rgba(0, 0, 0, 0.5)
+  .social
+    a
+      transition: all linear .1s
+      text-decoration: none
+      color: rgba(0, 0, 0, 0.4)
       font-size: 29px
       margin: 0 10px
       &:first-child
         font-size: 24px
         paddng-top: 8px
       &:hover
-        color: rgba(0, 0, 0, 0.4)
+        color: rgba(0, 0, 0, 0.9)
   .logo-space
+    small
+      font-size: 6.6px
+
     .main-title
       font-weight 300
       text-transform uppercase
       font-family "Bask Old Face"
       font-size 24px
       letter-spacing 2px
+      margin-bottom: -10px
   div
     flex 1
     flex-basis 100%
@@ -354,7 +364,7 @@ footer
 
   .menu-item
       &:hover
-          color rgba(215, 197, 187, 1)
+          color rgba(0, 0, 0, .5)
       &:nth-child(3)
           transition-duration 180ms
       &:nth-child(4)

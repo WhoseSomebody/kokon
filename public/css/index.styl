@@ -35,7 +35,7 @@ section
     width 100%
     font-weight: 500
     font-size: 25px
-    color: rgba(255, 255, 255, .7)
+    color: rgba(255, 255, 255, .9)
     font-family: 'Exo 2'
     @media (min-width: 768px)
       padding: 10vh 13vw
@@ -52,17 +52,7 @@ section
     a:hover
       i:last-child
         animation: scrollMe .5s infinite
-@keyframes scrollMe {
-  0% {
-    margin 0 0 0 0
-  }
-  40% {
-    margin 5px 0 0 0
-  }
-  95% {
-    margin  0 0 0 0
-  }
-}
+
 #about
   text-align center
   font-weight 400
@@ -71,6 +61,7 @@ section
     margin 30px auto
 #services
   text-align center
+  background: url('/img/b31.png')
   .categories
     position relative
     display flex
@@ -82,53 +73,37 @@ section
       flex 1
       outline none
       text-shadow 0 0 1px rgba(255,255,255,0.3)
-      margin-bottom: 24px
+      margin-bottom: 74px
       .overlay
-        height: 257px;
-        width: 287px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-144px);
-        background: linear-gradient(to bottom,  rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%)
-        z-index: 5
+        height: 257px
+        width: 287px
+        margin-top: -263px
+        position: absolute
+        left: 50%
+        transform: translateX(-144px)
+        background: linear-gradient(to right, rgba(13,13,13,0.2) 0%,  rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%)
+        z-index: 20
+        &:after
+          transition: all .1s linear
+          content: ''
+          position: absolute
+          left: 0
+          box-shadow: 0 0 10px black
+          border-radius: 50%
+          width: 100%
+          height: 20px
+          display: block
+          bottom: 0px
+          clip: rect(20px auto 40px auto)
+        &:hover
+          // box-shadow: 0 0 20px black
+          &:after
+            box-shadow: 0 0 15px black
       a
         color black
         text-decoration none
         position: relative
-        &:before
-          height: 257px
-          width: 0
-          overflow: hidden
-          content: ""
-          background: rgba(255,255,255,0.9)
-          position: absolute
-          padding: 0
-          box-sizing: border-box
-          transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) .4s
-        &:after
-          content: attr(data-description)
-          transition: all cubic-bezier(.62,1,.83,1) .2s
-          position: absolute
-          overflow: hidden
-          height: 257px
-          width: 287px
-          left: -70px
-          box-sizing: border-box
-          padding: 50px 0px
-          opacity: 0
-          color: transparent
-          font-size: 0
-        &:hover:before
-          width: 287px
-          padding: 79px 30px
-        &:hover:after
-          left: 0
-          padding: 50px 30px
-          opacity: 1
-          color: rgba(0,0,0,0.7)
-          font-size: 16px
         img
-          border: 1px solid rgba(0,0,0,0.2)
           box-sizing: border-box
           border-radius: 2px
           height: 257px
@@ -139,12 +114,12 @@ section
         display: inline-block
         position: absolute
         font-size: 26px
-        font-weight: 600
+        font-weight: 200
         margin: 0
         z-index: 20
         left: 0px
-        padding-top: 218px
-        color: #fff
+        padding-top: 268px
+        color: #090804
         height: 257px;
         width: 287px;
       @media (min-width: 768px)
@@ -165,9 +140,11 @@ section
       cursor: pointer
       flex 1
       margin: 10px 10px 40px 10px
-      padding-top: 120px
+      padding-top: 160px
       background-repeat: no-repeat
       background-position: center
+      span
+        display: inline-block;
       @media (max-width: 768px)
         flex-basis 100%
       @media (min-width: 768px)
@@ -176,10 +153,16 @@ section
         flex-basis 30%
       &#departure
         background-image url("../img/departure.png")
+        &:hover
+          animation: benefitsAnim1 .4s infinite
       &#quality
         background-image url("../img/quality.png")
+        &:hover
+          animation: benefitsAnim2 .4s infinite
       &#costumes
         background-image url("../img/costumes.png")
+        &:hover
+          animation: benefitsAnim3 .4s infinite
 #collective-work
   text-align: center
   background linear-gradient(to right, rgba(13,13,13,0.1) 0%, rgba(255,255,255,0.28) 30%,  rgba(255,255,255,0.28) 70%, rgba(13,13,13,0.1) 99%), url("../img/collective-bckg.jpg") center center scroll
@@ -226,10 +209,10 @@ section
       @media (min-width: 992px)
         height 26px
         margin 0px 0 0 0
-        font-size 18px
+        font-size 10px
         line-height 32px
       @media (min-width: 1200px)
-        font-size 28px
+        font-size 11px
         line-height 28px
 #feedback
   text-align: center
@@ -249,9 +232,6 @@ section
         flex 1
         display: inline-block
         padding: 9px
-        border: 1px solid #DDDDDD
-        margin-bottom: 30px
-        border-radius: 3px
         margin: 10px
         @media (max-width: 768px)
           flex-basis 100%
@@ -263,18 +243,12 @@ section
           text-align: center
           @media (min-width: 768px)
             flex-basis 10%
-      label
-        display: block
-        float: left
-        background: #FFFFFF
-        padding: 2px 5px 2px 5px
-        color: #B9B9B9
-        overflow: hidden
-        font-size: 18px
-        margin-top: -25px
+
       input[type="text"],
       input[type="tel"]
-        text-align: center
+        font-family: 'amsdam'
+        padding: 25px 20px
+        color: #666
         box-sizing: border-box
         width: 100%
         display: block
@@ -283,17 +257,11 @@ section
         height: 25px
         line-height: 25px
         font-size: 18px
-        padding: 0
-      span
-        background: #F3F3F3
-        display: block
-        padding: 3px
-        margin: 3px -9px -9px -9px
-        text-align: center
-        color: #808080
-        font-size: 14px
+        border: 1px solid #DDDDDD
+        border-radius: 3px
       input[type="submit"]
         width 100%
+        height: 51px
         background: #e1e1e1
         border: none
         padding: 10px 20px 10px 20px
@@ -306,3 +274,56 @@ section
         &:hover
           background: #cecece
           color:#fff
+@keyframes scrollMe {
+  0% {
+    margin 0 0 0 0
+  }
+  40% {
+    margin 5px 0 0 0
+  }
+  95% {
+    margin  0 0 0 0
+  }
+}
+@keyframes benefitsAnim1 {
+  0% {
+    background-position: center
+  }
+  40% {
+    background-position-x: 49%;
+  }
+  70% {
+    background-position: center
+  }
+  90% {
+    background-position-x: 51%;
+  }
+}
+@keyframes benefitsAnim2 {
+  0% {
+    background-position: center
+  }
+  40% {
+    background-position-y: 48%;
+  }
+  70% {
+    background-position: center
+  }
+  90% {
+    background-position-y: 52%;
+  }
+}
+@keyframes benefitsAnim3 {
+  0% {
+    background-position: center
+  }
+  40% {
+    background-position-y: 46%;
+  }
+  70% {
+    background-position: center
+  }
+  90% {
+    background-position-y: 54%;
+  }
+}

@@ -2,20 +2,16 @@ doctype html
 html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
   head
     meta(charset="UTF-8")
-    link(rel='apple-touch-icon', sizes='57x57', href='img/favicons/apple-icon-57x57.png')
-    link(rel='apple-touch-icon', sizes='60x60', href='img/favicons/apple-icon-60x60.png')
-    link(rel='apple-touch-icon', sizes='72x72', href='img/favicons/apple-icon-72x72.png')
-    link(rel='apple-touch-icon', sizes='76x76', href='img/favicons/apple-icon-76x76.png')
-    link(rel='apple-touch-icon', sizes='114x114', href='img/favicons/apple-icon-114x114.png')
-    link(rel='apple-touch-icon', sizes='120x120', href='img/favicons/apple-icon-120x120.png')
-    link(rel='apple-touch-icon', sizes='144x144', href='img/favicons/apple-icon-144x144.png')
-    link(rel='apple-touch-icon', sizes='152x152', href='img/favicons/apple-icon-152x152.png')
-    link(rel='apple-touch-icon', sizes='180x180', href='img/favicons/apple-icon-180x180.png')
-    link(rel='icon', type='image/png', sizes='192x192', href='img/favicons/android-icon-192x192.png')
-    link(rel='icon', type='image/png', sizes='32x32', href='img/favicons/favicon-32x32.png')
-    link(rel='icon', type='image/png', sizes='96x96', href='img/favicons/favicon-96x96.png')
-    link(rel='icon', type='image/png', sizes='16x16', href='img/favicons/favicon-16x16.png')
-    link(rel='manifest', href='img/favicons/manifest.json')
+    link(rel="apple-touch-icon", sizes="76x76", href="/img/favicons/apple-touch-icon.png")
+    link(rel="icon", type="image/png", href="/img/favicons/favicon-32x32.png", sizes="32x32")
+    link(rel="icon", type="image/png", href="/img/favicons/favicon-16x16.png", sizes="16x16")
+    link(rel="manifest", href="/img/favicons/manifest.json")
+    link(rel="mask-icon", href="/img/favicons/safari-pinned-tab.svg", color="#5bbad5")
+    link(rel="shortcut icon", href="/img/favicons/favicon.ico")
+    meta(name="apple-mobile-web-app-title", content="KOKON")
+    meta(name="application-name", content="KOKON")
+    meta(name="msapplication-config", content="/img/favicons/browserconfig.xml")
+    meta(name="theme-color", content="#ffffff")
     link(href="https://fonts.googleapis.com/css?family=Exo+2:200,300,300i,400,400i,600&amp;subset=cyrillic" rel="stylesheet")
     meta(name='msapplication-TileColor', content='#ffffff')
     meta(name='msapplication-TileImage', content='img/favicons/ms-icon-144x144.png')
@@ -69,7 +65,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     footer
       .copyright
         | Copyright © 2017
-        | COCON.CO.UA
+        a(href='/')  COCON.CO.UA
       .social
         a(href="#" title="Наш YouTube канал")
           <i class="fa fa-youtube" aria-hidden="true"></i>  
@@ -78,8 +74,9 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
         a(href="#" title="Наш Instagram профиль")
           <i class="fa fa-instagram" aria-hidden="true"></i>    
       .logo-space
-        small студия
         .main-title KOKON
+        small Costume, Makeup & Hairstyle
+        
          
   script(async).
     $( document ).ready(function () {
@@ -105,10 +102,10 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
       });
       
       $(window).click(function() {
-        $('.menu-open').prop('checked', false);
+          $('.menu-open').prop('checked', false);
       });
       
-      $('.menu-open').click(function(event){
+      $('.menu-open, .mobile-menu').click(function(event){
           event.stopPropagation();
       });
       

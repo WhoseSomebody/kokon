@@ -78,7 +78,7 @@ section p {
   width: 100%;
   font-weight: 500;
   font-size: 25px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.9);
   font-family: 'Exo 2';
 }
 @media (min-width: 768px) {
@@ -114,6 +114,7 @@ section p {
 }
 #services {
   text-align: center;
+  background: url("/img/b31.png");
 }
 #services .categories {
   position: relative;
@@ -151,11 +152,12 @@ section p {
   flex: 1;
   outline: none;
   text-shadow: 0 0 1px rgba(255,255,255,0.3);
-  margin-bottom: 24px;
+  margin-bottom: 74px;
 }
 #services .categories .wrapper .overlay {
   height: 257px;
   width: 287px;
+  margin-top: -263px;
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-144px);
@@ -163,72 +165,41 @@ section p {
   -o-transform: translateX(-144px);
   -ms-transform: translateX(-144px);
   transform: translateX(-144px);
-  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%);
-  background: -moz-linear-gradient(top, rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%);
-  background: -o-linear-gradient(top, rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%);
-  background: -ms-linear-gradient(top, rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%);
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 80%, rgba(13,13,13,0.7) 99%);
-  z-index: 5;
+  background: -webkit-linear-gradient(left, rgba(13,13,13,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%);
+  background: -moz-linear-gradient(left, rgba(13,13,13,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%);
+  background: -o-linear-gradient(left, rgba(13,13,13,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%);
+  background: -ms-linear-gradient(left, rgba(13,13,13,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%);
+  background: linear-gradient(to right, rgba(13,13,13,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(13,13,13,0.2) 99%);
+  z-index: 20;
+}
+#services .categories .wrapper .overlay:after {
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  -ms-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  content: '';
+  position: absolute;
+  left: 0;
+  -webkit-box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 10px #000;
+  border-radius: 50%;
+  width: 100%;
+  height: 20px;
+  display: block;
+  bottom: 0px;
+  clip: rect(20px auto 40px auto);
+}
+#services .categories .wrapper .overlay:hover:after {
+  -webkit-box-shadow: 0 0 15px #000;
+  box-shadow: 0 0 15px #000;
 }
 #services .categories .wrapper a {
   color: #000;
   text-decoration: none;
   position: relative;
 }
-#services .categories .wrapper a:before {
-  height: 257px;
-  width: 0;
-  overflow: hidden;
-  content: "";
-  background: rgba(255,255,255,0.9);
-  position: absolute;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) 0.4s;
-  -moz-transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) 0.4s;
-  -o-transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) 0.4s;
-  -ms-transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) 0.4s;
-  transition: all cubic-bezier(0.1, 0.1, 0.2, 0.9) 0.4s;
-}
-#services .categories .wrapper a:after {
-  content: attr(data-description);
-  -webkit-transition: all cubic-bezier(0.62, 1, 0.83, 1) 0.2s;
-  -moz-transition: all cubic-bezier(0.62, 1, 0.83, 1) 0.2s;
-  -o-transition: all cubic-bezier(0.62, 1, 0.83, 1) 0.2s;
-  -ms-transition: all cubic-bezier(0.62, 1, 0.83, 1) 0.2s;
-  transition: all cubic-bezier(0.62, 1, 0.83, 1) 0.2s;
-  position: absolute;
-  overflow: hidden;
-  height: 257px;
-  width: 287px;
-  left: -70px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 50px 0px;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  color: transparent;
-  font-size: 0;
-}
-#services .categories .wrapper a:hover:before {
-  width: 287px;
-  padding: 79px 30px;
-}
-#services .categories .wrapper a:hover:after {
-  left: 0;
-  padding: 50px 30px;
-  opacity: 1;
-  -ms-filter: none;
-  filter: none;
-  color: rgba(0,0,0,0.7);
-  font-size: 16px;
-}
 #services .categories .wrapper a img {
-  border: 1px solid rgba(0,0,0,0.2);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -244,12 +215,12 @@ section p {
   display: inline-block;
   position: absolute;
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 200;
   margin: 0;
   z-index: 20;
   left: 0px;
-  padding-top: 218px;
-  color: #fff;
+  padding-top: 268px;
+  color: #090804;
   height: 257px;
   width: 287px;
 }
@@ -306,9 +277,12 @@ section p {
   -ms-flex: 1;
   flex: 1;
   margin: 10px 10px 40px 10px;
-  padding-top: 120px;
+  padding-top: 160px;
   background-repeat: no-repeat;
   background-position: center;
+}
+#benefits div p span {
+  display: inline-block;
 }
 @media (max-width: 768px) {
   #benefits div p {
@@ -331,11 +305,32 @@ section p {
 #benefits div p#departure {
   background-image: url("../img/departure.png");
 }
+#benefits div p#departure:hover {
+  -webkit-animation: benefitsAnim1 0.4s infinite;
+  -moz-animation: benefitsAnim1 0.4s infinite;
+  -o-animation: benefitsAnim1 0.4s infinite;
+  -ms-animation: benefitsAnim1 0.4s infinite;
+  animation: benefitsAnim1 0.4s infinite;
+}
 #benefits div p#quality {
   background-image: url("../img/quality.png");
 }
+#benefits div p#quality:hover {
+  -webkit-animation: benefitsAnim2 0.4s infinite;
+  -moz-animation: benefitsAnim2 0.4s infinite;
+  -o-animation: benefitsAnim2 0.4s infinite;
+  -ms-animation: benefitsAnim2 0.4s infinite;
+  animation: benefitsAnim2 0.4s infinite;
+}
 #benefits div p#costumes {
   background-image: url("../img/costumes.png");
+}
+#benefits div p#costumes:hover {
+  -webkit-animation: benefitsAnim3 0.4s infinite;
+  -moz-animation: benefitsAnim3 0.4s infinite;
+  -o-animation: benefitsAnim3 0.4s infinite;
+  -ms-animation: benefitsAnim3 0.4s infinite;
+  animation: benefitsAnim3 0.4s infinite;
 }
 #collective-work {
   text-align: center;
@@ -412,13 +407,13 @@ section p {
   #collective-work .logo-inner .main-subtitle {
     height: 26px;
     margin: 0px 0 0 0;
-    font-size: 18px;
+    font-size: 10px;
     line-height: 32px;
   }
 }
 @media (min-width: 1200px) {
   #collective-work .logo-inner .main-subtitle {
-    font-size: 28px;
+    font-size: 11px;
     line-height: 28px;
   }
 }
@@ -467,9 +462,6 @@ section p {
   flex: 1;
   display: inline-block;
   padding: 9px;
-  border: 1px solid #ddd;
-  margin-bottom: 30px;
-  border-radius: 3px;
   margin: 10px;
 }
 @media (max-width: 768px) {
@@ -495,19 +487,11 @@ section p {
     flex-basis: 10%;
   }
 }
-#feedback form ul label {
-  display: block;
-  float: left;
-  background: #fff;
-  padding: 2px 5px 2px 5px;
-  color: #b9b9b9;
-  overflow: hidden;
-  font-size: 18px;
-  margin-top: -25px;
-}
 #feedback form ul input[type="text"],
 #feedback form ul input[type="tel"] {
-  text-align: center;
+  font-family: 'amsdam';
+  padding: 25px 20px;
+  color: #666;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -518,19 +502,12 @@ section p {
   height: 25px;
   line-height: 25px;
   font-size: 18px;
-  padding: 0;
-}
-#feedback form ul span {
-  background: #f3f3f3;
-  display: block;
-  padding: 3px;
-  margin: 3px -9px -9px -9px;
-  text-align: center;
-  color: #808080;
-  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
 }
 #feedback form ul input[type="submit"] {
   width: 100%;
+  height: 51px;
   background: #e1e1e1;
   border: none;
   padding: 10px 20px 10px 20px;
@@ -587,5 +564,173 @@ section p {
   }
   95% {
     margin: 0 0 0 0;
+  }
+}
+@-moz-keyframes benefitsAnim1 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-x: 49%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-x: 51%;
+  }
+}
+@-webkit-keyframes benefitsAnim1 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-x: 49%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-x: 51%;
+  }
+}
+@-o-keyframes benefitsAnim1 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-x: 49%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-x: 51%;
+  }
+}
+@keyframes benefitsAnim1 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-x: 49%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-x: 51%;
+  }
+}
+@-moz-keyframes benefitsAnim2 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 48%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 52%;
+  }
+}
+@-webkit-keyframes benefitsAnim2 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 48%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 52%;
+  }
+}
+@-o-keyframes benefitsAnim2 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 48%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 52%;
+  }
+}
+@keyframes benefitsAnim2 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 48%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 52%;
+  }
+}
+@-moz-keyframes benefitsAnim3 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 46%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 54%;
+  }
+}
+@-webkit-keyframes benefitsAnim3 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 46%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 54%;
+  }
+}
+@-o-keyframes benefitsAnim3 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 46%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 54%;
+  }
+}
+@keyframes benefitsAnim3 {
+  0% {
+    background-position: center;
+  }
+  40% {
+    background-position-y: 46%;
+  }
+  70% {
+    background-position: center;
+  }
+  90% {
+    background-position-y: 54%;
   }
 }
