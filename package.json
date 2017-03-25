@@ -4,6 +4,9 @@
   "main": "app.js",
   "author": "WhoseSomebody <whosesomebody@gmail.com>",
   "license": "GPL",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "express": "^4.15.2",
     "express-stylus": "^0.1.0",
