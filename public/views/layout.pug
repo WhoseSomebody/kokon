@@ -22,7 +22,15 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     link(rel="stylesheet" type="text/css" href='font-awesome/css/font-awesome.min.css')
     link(rel="stylesheet" type="text/css" href='css/style.css')
     block head-link
-    script(type="text/javascript" src="js/jquery-3.1.1.min.js")
+    script(type="text/javascript" src="js/jquery-3.1.1.min.js")  
+    script(type="text/javascript" src="js/scrollreveal.min.js")
+    script.
+      window.sr = ScrollReveal();
+      if (sr.isSupported()) {
+        document.documentElement.classList.add('sr');
+      }
+    
+    
   body
     header#header
       a(href="#image").logo-space.scroll 
@@ -75,10 +83,11 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
         a(href="#" title="Наш Instagram профиль")
           <i class="fa fa-instagram" aria-hidden="true"></i>    
       .logo-space
-        .main-title KOKON
-        small Costume, Makeup & Hairstyle
+        a(href="#")
+          .main-title KOKON
+          small Costume, Makeup & Hairstyle
         
-         
+       
   script(async).
     $( document ).ready(function () {
       let hashTagActive = "";
@@ -122,4 +131,8 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
       wrap.on("scroll", function (e) {
         headerMode();
       });
+      
+      sr.reveal('footer .social');
+    
     });
+    

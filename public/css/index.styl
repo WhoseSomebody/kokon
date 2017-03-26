@@ -27,9 +27,11 @@ section
   background-size cover
   display: flex
   flex-direction: column
-  justify-content: space-between
+  justify-content: flex-end
   align-content: center
-  padding: 35vh 0 0 0
+  @media (min-width: 768px)
+    justify-content: space-between
+    padding: 35vh 0 0 0
   box-sizing: border-box
   text-align: center
   .welcome-message
@@ -38,9 +40,10 @@ section
     box-sizing: border-box;
     width 100%
     font-weight: 500
-    font-size: 6vw
+    font-size: min(4vw, 9vh)
     color: rgba(255, 255, 255, .9)
     font-family: 'Exo 2'
+    min-height: 50vh
     @media (min-width: 768px)
       padding: 10vh 13vw
       font-size: 3.5vw
@@ -125,8 +128,9 @@ section
         left: 0px
         padding-top: 268px
         color: #090804
-        height: 257px;
         width: 287px;
+        &:hover
+          text-shadow: 0px 1px 1px rgba(0, 0, 0, .3)
       @media (min-width: 768px)
         flex-basis 50%
       @media (min-width: 992px)
@@ -179,6 +183,7 @@ section
     @media (min-width: 992px)
       width 70%
   .logo-inner
+    cursor: default
     width: 100vw
     margin-top: 50px
     margin-left: -10px
@@ -225,6 +230,12 @@ section
         line-height 28px
 #feedback
   text-align: center
+  .numbers
+    a
+      font-family: 'amsdam'
+      display: block
+      color #000
+      text-decoration: none
   form
     background:#fff
     border-radius:2px

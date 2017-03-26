@@ -60,6 +60,11 @@ block content
     section#feedback
       h2 ОСТАЛИСЬ ВОПРОСЫ?
       hr
+      .numbers
+        a(href="tel:+380674068244").phone +38 067 406 82 44
+        a(href="tel:+380679854825").phone +38 067 985 48 25
+      hr
+      note Или оставьте свой номер и мы Вам обязательно перезвоним!
       form
         ul
           li
@@ -68,8 +73,15 @@ block content
             input(type="tel" maxlength="15" title="Номер телефона" placeholder="(012) 345-67-89" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);")#number
           li    
             input(type="submit" value="Отправить") 
-      note Оставьте свой номер и мы Вам обязательно перезвоним!
     script.
+      sr.reveal('#about p');
+      sr.reveal('#about span');
+      sr.reveal('.wrapper', { duration: 700 }, 20);
+      sr.reveal('#benefits p',  { duration: 700 }, 20);
+      sr.reveal('#collective-work p');
+      sr.reveal('#collective-work .logo-inner');
+      sr.reveal('#feedback li');
+            
       let number = $('#number');
       $(function() {
         let regExp = /[^0-9\b\f\r]/i;

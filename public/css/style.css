@@ -257,13 +257,13 @@ header .numbers {
 @media (min-width: 768px) {
   header .numbers {
     width: 110px;
-    margin: 18px 0 15px 10px;
+    margin: 18px 0 23px 10px;
     padding: 3px 0 0 35px;
     -webkit-background-size: 30px auto;
     -moz-background-size: 30px auto;
     background-size: 30px auto;
     font-size: 12px;
-    height: 30px;
+    height: 27px;
   }
 }
 @media (min-width: 992px) {
@@ -287,7 +287,7 @@ header .numbers {
     -moz-background-size: 50px auto;
     background-size: 50px auto;
     font-size: 17px;
-    height: 50px;
+    height: 49px;
   }
 }
 @media (min-width: 768px) {
@@ -349,10 +349,10 @@ header .numbers {
   #header.compressed .numbers {
     width: 100px;
     margin: 25px 0 0 0;
-    -webkit-background-size: 30px auto;
-    -moz-background-size: 30px auto;
-    background-size: 30px auto;
-    padding: 0 0 40px 55px;
+    -webkit-background-size: 35px auto;
+    -moz-background-size: 35px auto;
+    background-size: 35px auto;
+    padding: 0 0 40px 61px;
     height: 30px;
   }
 }
@@ -445,8 +445,12 @@ footer .social a:first-child {
 footer .social a:hover {
   color: rgba(0,0,0,0.9);
 }
+footer .logo-space a {
+  color: #000;
+  text-decoration: none;
+}
 footer .logo-space small {
-  font-size: 6.6px;
+  font-size: 7px;
 }
 footer .logo-space .main-title {
   font-weight: 300;
@@ -496,19 +500,19 @@ footer div {
   }
 }
 .mobile-menu .menu-open-button {
-  width: 41px;
-  height: 37px;
+  width: 60px;
+  height: 60px;
   background: #000;
   border-radius: 100%;
 }
 .mobile-menu .menu-item,
 .mobile-menu .menu-open-button {
-  margin-left: -26px;
+  margin-left: -36px;
   position: absolute;
   top: 15px;
   color: #fff;
   text-align: center;
-  line-height: 25px;
+  line-height: 35px;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
@@ -525,7 +529,7 @@ footer div {
   text-align: center;
   color: #000;
   width: 0;
-  height: 26px;
+  height: 36px;
   text-decoration: none;
   padding: 0px 4px;
   font-weight: 600;
@@ -572,8 +576,8 @@ footer div {
   transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 .mobile-menu .menu-open:checked ~ .menu-item {
-  font-size: 15px;
-  width: 83px;
+  font-size: 22px;
+  width: 123px;
   visibility: visible;
   -webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   -moz-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -587,11 +591,11 @@ footer div {
   -o-transition-duration: 190ms;
   -ms-transition-duration: 190ms;
   transition-duration: 190ms;
-  -webkit-transform: translate3d(0, 50px, 0);
-  -moz-transform: translate3d(0, 50px, 0);
-  -o-transform: translate3d(0, 50px, 0);
-  -ms-transform: translate3d(0, 50px, 0);
-  transform: translate3d(0, 50px, 0);
+  -webkit-transform: translate3d(0, 70px, 0);
+  -moz-transform: translate3d(0, 70px, 0);
+  -o-transform: translate3d(0, 70px, 0);
+  -ms-transform: translate3d(0, 70px, 0);
+  transform: translate3d(0, 70px, 0);
 }
 .mobile-menu .menu-open:checked ~ .menu-item:nth-child(4) {
   -webkit-transition-duration: 290ms;
@@ -599,11 +603,11 @@ footer div {
   -o-transition-duration: 290ms;
   -ms-transition-duration: 290ms;
   transition-duration: 290ms;
-  -webkit-transform: translate3d(0, 85px, 0);
-  -moz-transform: translate3d(0, 85px, 0);
-  -o-transform: translate3d(0, 85px, 0);
-  -ms-transform: translate3d(0, 85px, 0);
-  transform: translate3d(0, 85px, 0);
+  -webkit-transform: translate3d(0, 110px, 0);
+  -moz-transform: translate3d(0, 110px, 0);
+  -o-transform: translate3d(0, 110px, 0);
+  -ms-transform: translate3d(0, 110px, 0);
+  transform: translate3d(0, 110px, 0);
 }
 .mobile-menu .menu-open:checked ~ .menu-item:nth-child(5) {
   -webkit-transition-duration: 390ms;
@@ -611,11 +615,11 @@ footer div {
   -o-transition-duration: 390ms;
   -ms-transition-duration: 390ms;
   transition-duration: 390ms;
-  -webkit-transform: translate3d(0, 120px, 0);
-  -moz-transform: translate3d(0, 120px, 0);
-  -o-transform: translate3d(0, 120px, 0);
-  -ms-transform: translate3d(0, 120px, 0);
-  transform: translate3d(0, 120px, 0);
+  -webkit-transform: translate3d(0, 150px, 0);
+  -moz-transform: translate3d(0, 150px, 0);
+  -o-transform: translate3d(0, 150px, 0);
+  -ms-transform: translate3d(0, 150px, 0);
+  transform: translate3d(0, 150px, 0);
 }
 .mobile-menu .menu-open:checked ~ .menu-item:nth-child(6) {
   -webkit-transition-duration: 490ms;
@@ -623,11 +627,11 @@ footer div {
   -o-transition-duration: 490ms;
   -ms-transition-duration: 490ms;
   transition-duration: 490ms;
-  -webkit-transform: translate3d(0, 155px, 0);
-  -moz-transform: translate3d(0, 155px, 0);
-  -o-transform: translate3d(0, 155px, 0);
-  -ms-transform: translate3d(0, 155px, 0);
-  transform: translate3d(0, 155px, 0);
+  -webkit-transform: translate3d(0, 190px, 0);
+  -moz-transform: translate3d(0, 190px, 0);
+  -o-transform: translate3d(0, 190px, 0);
+  -ms-transform: translate3d(0, 190px, 0);
+  transform: translate3d(0, 190px, 0);
 }
 .mobile-menu .hamburger {
   width: 20px;

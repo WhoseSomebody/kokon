@@ -37,7 +37,7 @@ header
   width 100%
   display none
   @media only screen and (min-width: 768px)
-    display flex 
+    display flex
     justify-content space-around
   @media only screen and (min-width: 992px)
     height 110px
@@ -153,11 +153,11 @@ header
     color #999
     @media (min-width: 768px)
       width 110px
-      margin 18px 0 15px 10px
+      margin 18px 0 23px 10px
       padding 3px 0 0 35px
       background-size 30px auto
       font-size 12px
-      height 30px
+      height 27px
     @media (min-width: 992px)
       width 130px
       margin 35px 0 30px 0px
@@ -171,7 +171,7 @@ header
       padding 0 0 0 60px
       background-size 50px auto
       font-size 17px
-      height 50px
+      height 49px
     .phone
       @media (min-width: 768px)
         height: 10px
@@ -212,8 +212,8 @@ header
       @media (min-width: 992px)
         width 100px
         margin 25px 0 0 0
-        background-size 30px auto
-        padding 0 0 40px 55px
+        background-size 35px auto
+        padding 0 0 40px 61px
         height 30px
       .phone
         @media (min-width: 992px)
@@ -252,8 +252,11 @@ footer
       &:hover
         color: rgba(0, 0, 0, 0.9)
   .logo-space
+    a
+      color #000
+      text-decoration: none
     small
-      font-size: 6.6px
+      font-size: 7px
 
     .main-title
       font-weight 300
@@ -282,17 +285,17 @@ footer
   box-sizing border-box
   font-size 3px
   .menu-open-button
-      width 41px
-      height 37px
+      width 60px
+      height 60px
       background #000
       border-radius: 100%
   .menu-item, .menu-open-button
-      margin-left -26px
+      margin-left -36px
       position absolute
       top 15px
       color white
       text-align center
-      line-height 25px
+      line-height 35px
       transform translate3d(0, 0, 0)
       transition transform ease-out 200ms
       overflow: hidden
@@ -300,7 +303,7 @@ footer
       text-align: center
       color #000
       width 0
-      height: 26px
+      height: 36px
       text-decoration: none
       padding: 0px 4px
       font-weight: 600
@@ -323,22 +326,22 @@ footer
               .hamburger-3
                   transform translate3d(0, 0, 0) rotate(-45deg)
           & ~ .menu-item
-              font-size 15px
-              width 83px
+              font-size 22px
+              width 123px
               visibility: visible
               transition-timing-function cubic-bezier(0.165, 0.84, 0.44, 1)
               &:nth-child(3)
                   transition-duration 190ms
-                  transform translate3d(0, 50px, 0)
+                  transform translate3d(0, 70px, 0)
               &:nth-child(4)
                   transition-duration 290ms
-                  transform translate3d(0, 85px, 0)
+                  transform translate3d(0, 110px, 0)
               &:nth-child(5)
                   transition-duration 390ms
-                  transform translate3d(0, 120px, 0)
+                  transform translate3d(0, 150px, 0)
               &:nth-child(6)
                   transition-duration 490ms
-                  transform translate3d(0, 155px, 0)
+                  transform translate3d(0, 190px, 0)
 
 
   .hamburger
