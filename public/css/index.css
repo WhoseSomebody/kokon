@@ -1,3 +1,6 @@
+#header {
+  position: fixed;
+}
 section {
   -webkit-box-shadow: #000 0 6px 10px -8px;
   box-shadow: #000 0 6px 10px -8px;
@@ -40,7 +43,7 @@ section p {
     font-size: 22px;
   }
 }
-#image {
+.image {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -79,7 +82,7 @@ section p {
   text-align: center;
 }
 @media (min-width: 768px) {
-  #image {
+  .image {
     -webkit-box-pack: justify;
     -moz-box-pack: justify;
     -o-box-pack: justify;
@@ -89,7 +92,7 @@ section p {
     padding: 35vh 0 0 0;
   }
 }
-#image .welcome-message {
+.image .welcome-message {
   padding: 0 20%;
   text-transform: uppercase;
   -webkit-box-sizing: border-box;
@@ -103,22 +106,22 @@ section p {
   min-height: 50vh;
 }
 @media (min-width: 768px) {
-  #image .welcome-message {
+  .image .welcome-message {
     padding: 10vh 13vw;
     font-size: 3.5vw;
   }
 }
-#image .scroll-down {
+.image .scroll-down {
   width: 100%;
 }
-#image .scroll-down a i:first-child {
+.image .scroll-down a i:first-child {
   color: rgba(255,255,255,0.3);
 }
-#image .scroll-down a i:last-child {
+.image .scroll-down a i:last-child {
   color: #fff;
   margin-top: 2px;
 }
-#image .scroll-down a:hover i:last-child {
+.image .scroll-down a:hover i:last-child {
   -webkit-animation: scrollMe 0.5s infinite;
   -moz-animation: scrollMe 0.5s infinite;
   -o-animation: scrollMe 0.5s infinite;

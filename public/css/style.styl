@@ -21,21 +21,22 @@
 body
   margin 0
   padding 0
-  // font-family: 'Exo 2'
-  // font-weight: 200
-  // letter-spacing: .5px
   font-family: 'geometria-light'
   font-weight: 200
-  // letter-spacing: .5px
+  display: flex
+  min-height: 100vh
+  flex-direction: column
   section
     letter-spacing: .5px
 
 #content
   overflow hidden
+  flex 1
 header
   z-index 100
   width 100%
   display none
+  box-shadow 1px -3px 10px #000
   @media only screen and (min-width: 768px)
     display flex
     justify-content space-around
@@ -178,11 +179,9 @@ header
         margin -5px 0 0 0
 
 #header
-  position fixed
   background rgba(255,255,255,.8)
   &.compressed
     background #fff
-    box-shadow 1px -3px 10px #000
     @media (min-width: 992px)
       height 80px
     .logo-space
@@ -392,6 +391,7 @@ footer
   background: none
   position: absolute
   width: 100%
+  z-index: 40
   a
     float: right
     text-align: center

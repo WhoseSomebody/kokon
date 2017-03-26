@@ -1,0 +1,28 @@
+extends ./layout
+
+block head-link
+  link(rel="stylesheet" type="text/css" href="css/category.css")
+  link(type="text/css" rel="stylesheet" href="css/lightgallery.min.css")
+  link(type="text/css" rel="stylesheet" href="css/lg-transitions.min.css")
+    
+block content
+  script(src="js/lightgallery.min.js")
+  script(src="js/lg-thumbnail.min.js")
+  section#top
+    .summary
+      .letter
+        h1.title= category.name
+        hr
+        p.description= category.description  
+    #lightgallery  
+      //- .galery-item
+      //- .galery-item  
+      each url in category.img_urls
+        a(href=url).galery-item
+            img(src=url)
+            .overlay    
+  script.
+    lightGallery(document.getElementById('lightgallery'), {
+      mode: 'lg-slide-skew-only-y',
+      download: false
+    });

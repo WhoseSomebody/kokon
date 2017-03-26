@@ -18,7 +18,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     meta(name='msapplication-TileImage', content='img/favicons/ms-icon-144x144.png')
     meta(name='theme-color', content='#ffffff')
     block title
-      title Студия "Кокон"
+      title= title || 'Студия "Кокон"'
     link(rel="stylesheet" type="text/css" href='font-awesome/css/font-awesome.min.css')
     link(rel="stylesheet" type="text/css" href='css/style.css')
     block head-link
@@ -33,7 +33,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     
   body
     header#header
-      a(href="#image").logo-space.scroll 
+      a(href="/#i").logo-space.scroll 
         h2.main-title KOKON
         h3.main-subtitle Costume, Makeup & Hairstyle
         
@@ -55,7 +55,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
         .phone +38 067 406 82 44
         .phone +38 067 985 48 25
     #header-mobile    
-      a(href="#").logo-space
+      a(href="/").logo-space
         .main-title KOKON
         .main-subtitle Costume, Makeup & Hairstyle
     nav.mobile-menu
@@ -95,21 +95,22 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
       $( window ).resize(function() {
         headerHeight = $( document ).width() < 768 ? 0 : $( document ).width() < 992 ? 70 : 80
       })
-      $(".scroll").on("click touchstart", function (event) {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-            event.preventDefault();
-            let dest = 0;
-            if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-              dest = $(document).height() - $(window).height();
-            } else {
-              dest = $(this.hash).offset().top;
-            }
-            $('html,body').animate({
-              scrollTop: dest - headerHeight
-            }, 1000);
-            hashTagActive = this.hash;
-        }
-      });
+      if (location.pathname == "/")
+        $(".scroll").on("click touchstart", function (event) {
+          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+              event.preventDefault();
+              let dest = 0;
+              if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+                dest = $(document).height() - $(window).height();
+              } else {
+                dest = $(this.hash).offset().top;
+              }
+              $('html,body').animate({
+                scrollTop: dest - headerHeight
+              }, 1000);
+              hashTagActive = this.hash;
+          }
+        });
       
       $(window).click(function() {
           $('.menu-open').prop('checked', false);

@@ -3,7 +3,7 @@ extends ./layout
 block head-link
   link(rel="stylesheet" type="text/css" href='css/index.css')
 block content
-    section#image
+    section.image#i
       .welcome-message
         | Если Вы хотите перевоплотиться, мы с радостью поможем это сделать!
       .scroll-down  
@@ -28,11 +28,12 @@ block content
       h2 ПОРТФОЛИО
       hr
       .categories
-        - var names = ['Телевидение', 'Кино', 'Корпоратив', 'Свадьба', 'Спецгрим', 'Шоу-бизнес']
-        - var src = ['/img/tv.jpg', '/img/movie.jpg', '/img/corporate.jpg', '/img/wedding.jpg', '/img/special-makeup.jpg', '/img/show-business.jpg']
-        - for (var i = 0; i < 6; i++) {
+        - let names = ['Телевидение', 'Кино', 'Корпоратив', 'Свадьба', 'Спецгрим', 'Шоу-бизнес']
+        - let src = ['/img/tv.jpg', '/img/movie.jpg', '/img/corporate.jpg', '/img/wedding.jpg', '/img/special-makeup.jpg', '/img/show-business.jpg']
+        - let hrefs = ['/tv', '/movie', '/corporate', '/wedding', '/special-makeup', '/show-business']
+        - for (let i = 0; i < 6; i++) {
           .wrapper
-            a(href="#")
+            a(href=hrefs[i])
               img(src=src[i], alt='Студия "Кокон".' + names[i] + '.')
               h3.title #{names[i]}
               .overlay  
