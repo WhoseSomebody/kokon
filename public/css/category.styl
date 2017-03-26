@@ -12,9 +12,9 @@
     font-family: 'amsdam'
     box-sizing: border-box
     z-index: 25
-    font-size: 3.5vw
+    font-size: min(3.5vw, 3vh)
     width: 100vw
-    height: 50vh
+    min-height: 50vh
     @media (min-width: 768px)
       font-size: 1.2vw
       width: 50vw
@@ -29,6 +29,8 @@
       display: block;
       position: relative;
       padding: 6vw
+      @media (min-width: 500px)
+        padding: 2vw
       @media (min-width: 768px)
         padding 2vw
       &:after
@@ -58,8 +60,7 @@
     height: 24.3vw
     padding: .15vw
     margin: .1vw
-    @media (min-width: 768px)
-      flex-basis 50%
+
 
   .overlay
     position: absolute
@@ -69,10 +70,14 @@
 
     width: 24.5vw
     height: 24.5vw
-    margin-top: -24.7vw
+    margin-top: -1.5vw
     transform: translateX(-12.45vw)
+    @media (min-width: 500px)
+      margin-top: -.6vw
     @media (min-width: 768px)
-      flex-basis 50%
+      width: 24.5vw
+      height: 24.5vw
+      margin-top: -24.7vw
 
     &:after
       transition: all .1s linear
