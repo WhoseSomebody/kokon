@@ -10,6 +10,12 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+router.get('/prices', (req, res) => {
+  res.render('prices', {
+    title: "Цены"
+  });
+});
+
 router.get(['/tv', '/movie', '/corporate', '/wedding', '/special-makeup', '/show-business'], (req, res) => {
   let name;
   switch(req.path){

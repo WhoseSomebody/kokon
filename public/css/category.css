@@ -6,73 +6,10 @@
 #header-mobile a {
   color: #000;
 }
-#top {
-  background: url("/img/b31.png");
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  -o-box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-#top .summary {
+#top .title {
   font-family: 'amsdam';
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  z-index: 25;
-  font-size: 3vh;
-  width: 100vw;
-  min-height: 50vh;
-}
-@media (min-width: 768px) {
-  #top .summary {
-    font-size: 1.2vw;
-    width: 50vw;
-    height: 25vw;
-  }
-}
-#top .summary .title {
   text-align: center;
-}
-#top .summary .letter {
-  text-align: justify;
-  height: 100%;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  display: block;
-  position: relative;
-  padding: 6vw;
-}
-@media (min-width: 500px) {
-  #top .summary .letter {
-    padding: 2vw;
-    height: 99.7%;
-    width: 99%;
-  }
-}
-@media (min-width: 768px) {
-  #top .summary .letter {
-    padding: 2vw;
-  }
-}
-#top .summary .letter:after {
-  content: "";
-  background: url("/img/b31.png");
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+  width: 100vw;
 }
 #top #lightgallery {
   display: -webkit-box;
@@ -87,7 +24,7 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-top: -24.9vw;
+  margin-top: 2vw;
 }
 #top .galery-item {
   position: relative;
@@ -125,7 +62,7 @@
 }
 @media (min-width: 500px) {
   #top .overlay {
-    margin-top: -0.6vw;
+    margin-top: -25.6vw;
   }
 }
 @media (min-width: 768px) {

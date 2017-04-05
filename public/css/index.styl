@@ -46,8 +46,10 @@ section
     color: rgba(255, 255, 255, .9)
     font-family: 'Exo 2'
     min-height: 50vh
+    font-size: 5.5vw    
+    padding: 33vh 13vw  0 13vw  
     @media (min-width: 768px)
-      padding: 10vh 13vw
+      padding: 19vh 13vw
       font-size: 3.5vw
 
   .scroll-down
@@ -62,7 +64,7 @@ section
       i:last-child
         animation: scrollMe .5s infinite
 
-#about
+#about, #prices
   text-align center
   p
     font-weight 400 
@@ -70,11 +72,11 @@ section
     @media (min-width: 768px)
       width 70%
   span
-    font-weight: 200
-    font-size: 6vw
-    @media (min-width: 768px)
-      font-size: 3vw
-    color: #555
+    img   
+      width: 40vw
+      @media (min-width: 500px)
+        width: 20vw
+          
 
 #services
   text-align center
@@ -185,6 +187,7 @@ section
   text-align: center
   background linear-gradient(to right, rgba(13,13,13,0.1) 0%, rgba(255,255,255,0.28) 30%,  rgba(255,255,255,0.28) 70%, rgba(13,13,13,0.1) 99%), url("../img/collective-bckg.jpg") center center scroll
   background-size cover
+  background-repeat: no-repeat  
   p
     width 78%
     margin: auto
@@ -240,6 +243,9 @@ section
         line-height 28px
 #feedback
   text-align: center
+  background linear-gradient(to right, rgba(13,13,13,0.1) 0%, rgba(255,255,255,0.28) 30%,  rgba(255,255,255,0.28) 70%, rgba(13,13,13,0.1) 99%), url("../img/collective-bckg.jpg") center center scroll
+  background-size cover
+  background-repeat: no-repeat
   .numbers
     a
       font-family: 'amsdam'
@@ -250,6 +256,7 @@ section
     background:#fff
     border-radius:2px
     padding:20px
+    background: transparent
     ul
       width: 100%
       list-style: none
@@ -295,17 +302,22 @@ section
         width 100%
         height: 51px
         background: #e1e1e1
-        border: none
         padding: 10px 20px 10px 20px
-        border-bottom: 3px solid #c5c5c5
         border-radius: 2px
-        color: #a9a7a7
         cursor: pointer
         text-transform: uppercase
         letter-spacing: 2px
+        border: 0px solid #c5c5c5  
+        border-bottom: 3px solid #c5c5c5        
+        color: #7a7a7a
+        &:focus
+          outline: none
         &:hover
           background: #cecece
-          color:#fff
+          color: #222
+          border-bottom: 3px solid #666       
+          
+          
 @keyframes scrollMe {
   0% {
     margin 0 0 0 0
