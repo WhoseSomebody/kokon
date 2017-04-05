@@ -55,6 +55,8 @@
 @media (min-width: 500px) {
   #top .summary .letter {
     padding: 2vw;
+    height: 99.7%;
+    width: 99%;
   }
 }
 @media (min-width: 768px) {
@@ -114,7 +116,7 @@
   z-index: 20;
   width: 24.5vw;
   height: 24.5vw;
-  margin-top: -1.5vw;
+  margin-top: -26vw;
   -webkit-transform: translateX(-12.45vw);
   -moz-transform: translateX(-12.45vw);
   -o-transform: translateX(-12.45vw);
