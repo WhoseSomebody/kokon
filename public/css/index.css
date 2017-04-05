@@ -130,14 +130,24 @@ section p {
 }
 #about {
   text-align: center;
-  font-weight: 400;
 }
 #about p {
+  font-weight: 400;
   margin: 30px auto;
 }
 @media (min-width: 768px) {
   #about p {
     width: 70%;
+  }
+}
+#about span {
+  font-weight: 200;
+  font-size: 6vw;
+  color: #555;
+}
+@media (min-width: 768px) {
+  #about span {
+    font-size: 3vw;
   }
 }
 #services {

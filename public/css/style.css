@@ -106,7 +106,7 @@ header .logo-space {
 header .logo-space .main-title {
   font-weight: 300;
   text-transform: uppercase;
-  font-family: "Bask Old Face";
+  font-family: "Times New Roman";
 }
 @media (min-width: 768px) {
   header .logo-space .main-title {
@@ -270,11 +270,13 @@ header .numbers {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-image: url("/img/phone.png");
   background-repeat: no-repeat;
   background-position: 0 5px;
   font-family: Arial;
   color: #999;
+}
+header .numbers i {
+  position: absolute;
 }
 @media (min-width: 768px) {
   header .numbers {
@@ -286,6 +288,10 @@ header .numbers {
     background-size: 30px auto;
     font-size: 12px;
     height: 27px;
+  }
+  header .numbers i {
+    margin-left: -20px;
+    font-size: 35px;
   }
 }
 @media (min-width: 992px) {
@@ -299,6 +305,10 @@ header .numbers {
     font-size: 14px;
     height: 39px;
   }
+  header .numbers i {
+    margin-left: -30px;
+    font-size: 52px;
+  }
 }
 @media (min-width: 1200px) {
   header .numbers {
@@ -310,6 +320,10 @@ header .numbers {
     background-size: 50px auto;
     font-size: 17px;
     height: 49px;
+  }
+  header .numbers i {
+    margin-left: -35px;
+    font-size: 56px;
   }
 }
 @media (min-width: 768px) {
@@ -373,6 +387,11 @@ header .numbers {
     background-size: 35px auto;
     padding: 0 0 40px 61px;
     height: 30px;
+  }
+  #header.compressed .numbers i {
+    margin-left: -45px;
+    margin-top: 4px;
+    font-size: 42px;
   }
 }
 @media (min-width: 992px) {
@@ -474,7 +493,7 @@ footer .logo-space small {
 footer .logo-space .main-title {
   font-weight: 300;
   text-transform: uppercase;
-  font-family: "Bask Old Face";
+  font-family: "Times New Roman";
   font-size: 24px;
   letter-spacing: 2px;
   margin-bottom: -10px;
