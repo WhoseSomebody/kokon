@@ -27,7 +27,7 @@ router.post('/sms', bodyParser.urlencoded({ extended: false }), (req, res) => {
     <request>
       <operation>SENDSMS</operation>
       <message start_time=" AUTO " end_time=" AUTO " lifetime="4" rate="120" desc="" source="KOKON">
-        <body>На сайте kokon.co.ua поступил новый запрос от клиента.\n`+ name +`\n+`+ number +`</body> 
+        <body>На сайте kokon.co.ua новый запрос.\n`+ name +`\n+`+ number +`</body> 
         <recipient>`+ mynumber + `</recipient>
       </message>
     </request>
