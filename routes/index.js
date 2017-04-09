@@ -19,7 +19,7 @@ router.get('/prices', (req, res) => {
   });
 });
 router.post('/sms', bodyParser.urlencoded({ extended: false }), (req, res) => {
-  let mynumber = '380676903121';
+  let mynumber = '380674068244';
   let name = req.body.name,
       number = ("38" + req.body.number).match(/\d/g).join("");
   let body_sms =`
