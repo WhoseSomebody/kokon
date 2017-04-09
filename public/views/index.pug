@@ -77,15 +77,16 @@ block content
         a(href="tel:+380674068244").phone +38 067 406 82 44
         a(href="tel:+380679854825").phone +38 067 985 48 25
       hr
-      note Или оставьте свой номер и мы Вам обязательно перезвоним!
-      form
-        ul
-          li
-            input(type="text" name="name" placeholder="Имя")#name
-          li
-            input(type="tel" maxlength="15" title="Номер телефона" placeholder="(012) 345-67-89" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);")#number
-          li    
-            input(type="submit" value="Отправить") 
+      .sms_form
+        note Или оставьте свой номер и мы Вам обязательно перезвоним!
+        form(action='/sms' method="POST")#requestCall
+          ul
+            li
+              input(type="text" name="name" placeholder="Имя" pattern='^[a-zA-Zа-яА-ЯІіЇїЄєЫыЪъэЭ ]+$' required)#name
+            li
+              input(type="tel" maxlength="15" title="Номер телефона" placeholder="(012) 345-67-89" name="number" pattern='^[\\(][0]{1}\\d{2}[\\)]\\s\\d{3}-\\d{2}-\\d{2}$' required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);")#number
+            li    
+              input(type="submit" value="Отправить") 
     script.
       sr.reveal('#about p');
       sr.reveal('#about span');
@@ -94,7 +95,18 @@ block content
       sr.reveal('#collective-work p');
       sr.reveal('#collective-work .logo-inner');
       sr.reveal('#feedback li');
-            
+
+      $(function() {
+        let regExp = /[^a-zA-Zа-яА-ЯіїєыъЫЭЪІЇЄ ]+$/i;
+        $('#feedback input[type="text"]').on('keydown keyup', function(e) {
+          let value = e.key;
+          if (regExp.test(value) && value != 'Backspace' && value != 'Enter') {
+            e.preventDefault();
+            return false;
+          }
+        })
+      });      
+
       let number = $('#number');
       $(function() {
         let regExp = /[^0-9\b\f\r]/i;
@@ -118,5 +130,23 @@ block content
           else if (number == 13 && content[12] !== "-") 
             $(this).val(content.substring(0, 12) + '-' + content.substring(12, content.length))  
         });
+
+        if (localStorage.sms_sent || new Date(localStorage.sms_sent).getDate() == new Date().getDate()) { 
+          $('.sms_form').html('<h3>Спасибо! Ожидайте нашего звонка.</h3>');
+        } 
       });
+
+      $('#requestCall').on('submit',function (e) {
+              $.ajax({
+                type: 'post',
+                url: '/sms',
+                data: $('#requestCall').serialize(),
+                success: function () {
+                  
+                }
+              });
+              localStorage.setItem('sms_sent', new Date()); 
+              $('.sms_form').html('<h3>Спасибо! Ожидайте нашего звонка.</h3>');
+          e.preventDefault();
+        });
               

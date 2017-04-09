@@ -8,11 +8,13 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-stylus": "^0.1.0",
     "nib": "^1.1.2",
     "pug": "^2.0.0-beta11",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.5",
+    "xml2js": "^0.4.17"
   },
   "engines": {
     "node": "7.7.2"
