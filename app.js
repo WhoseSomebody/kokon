@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const routes = require('./routes/index');
 const stylus = require('express-stylus');
 const path = require('path');
