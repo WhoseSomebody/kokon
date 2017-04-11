@@ -131,7 +131,7 @@ block content
             $(this).val(content.substring(0, 12) + '-' + content.substring(12, content.length))  
         });
 
-        if (localStorage.sms_sent || new Date(localStorage.sms_sent).getDate() == new Date().getDate()) { 
+        if (localStorage.sms_sent && new Date(localStorage.sms_sent).getDate() == new Date().getDate()) { 
           $('.sms_form').html('<h3>Спасибо! Ожидайте нашего звонка.</h3>');
         } 
       });
