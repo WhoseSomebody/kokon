@@ -13,11 +13,6 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/prices', (req, res) => {
-  res.render('prices', {
-    title: "Цены"
-  });
-});
 router.post('/sms', bodyParser.urlencoded({ extended: false }), (req, res) => {
   let mynumber = '380674068244';
   let name = req.body.name,

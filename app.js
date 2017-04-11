@@ -22,6 +22,9 @@ app.use(stylus({
 }));
 
 app.use(express.static(publicDir, {maxAge: 604800000 }));
+app.get('*',function(req,res){  
+    res.redirect('https://kokon.co.ua'+req.url)
+})
 app.use('/', routes);
 
 const port = process.env.PORT || 3000;
