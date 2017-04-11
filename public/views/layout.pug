@@ -89,6 +89,13 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ua")
     if (sr.isSupported()) {
       document.documentElement.classList.add('sr');
     }
+    sr.reveal('#about p');
+    sr.reveal('#about span');
+    sr.reveal('.wrapper', { duration: 700 }, 20);
+    sr.reveal('#benefits p',  { duration: 700 }, 20);
+    sr.reveal('#collective-work p');
+    sr.reveal('#collective-work .logo-inner');
+    sr.reveal('#feedback li');
          
   script(async).
     $( document ).ready(function () {
