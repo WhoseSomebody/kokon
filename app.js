@@ -23,20 +23,13 @@ app.use(stylus({
 }));
 app.use(express.static(publicDir, {maxAge: 604800000 }));
 app.use(minify());
-var https_redirect = function () {
-  return function(req, res, next) {
-    if (req.secure) {
-      if(env === 'development') {
-        return res.redirect('https://localhost:3000' + req.url);
-      } else {
-        return res.redirect('https://' + req.headers.host + req.url);
-      }
+app.use(function(req,resp,next){
+    if (req.headers['x-forwarded-proto'] == 'http') {
+        return resp.redirect(301, 'https://' + req.headers.host + '/');
     } else {
-      return next();
+        return next();
     }
-  };
-};
-app.use(https_redirect());
+});
 app.use('/', routes);
 
 const port = process.env.PORT || 3000;
