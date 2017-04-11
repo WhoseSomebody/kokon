@@ -1,7 +1,7 @@
 extends ./layout
 
 block head-link
-  link(rel="stylesheet" type="text/css" href='https://kokon.co.ua/css/index.css')
+  link(rel="stylesheet" type="text/css" href='css/index.css')
 block content
     section.image#i
       .welcome-message
@@ -24,7 +24,7 @@ block content
         | и макияжа для тематических вечеринок и неординарного дня рождения. 
         br
       span
-        img(src="/img/about-imgs.png")  
+        img(src="/img/about-imgs.png" alt="Студия Кокон. О нас.")  
       p
         | Мы команда профессионалов с опытом работы более 10 лет в шоу-бизнессе,
         | кино, рекламе, ТВ. Профессионально подойдем к работе любой сложности.
@@ -34,8 +34,8 @@ block content
       hr
       .categories
         - let names = ['Телевидение', 'Кино', 'Корпоратив', 'Свадьба', 'Спецгрим', 'Шоу-бизнес']
-        - let src = ['https://kokon.co.ua/img/tv.jpg', 'https://kokon.co.ua/img/movie.jpg', 'https://kokon.co.ua/img/corporate.jpg', 'https://kokon.co.ua/img/wedding.jpg', 'https://kokon.co.ua/img/special-makeup.jpg', 'https://kokon.co.ua/img/show-business.jpg']
-        - let hrefs = ['https://kokon.co.ua/tv', 'https://kokon.co.ua/movie', 'https://kokon.co.ua/corporate', 'https://kokon.co.ua/wedding', 'https://kokon.co.ua/special-makeup', 'https://kokon.co.ua/show-business']
+        - let src = ['img/tv.jpg', 'img/movie.jpg', 'img/corporate.jpg', 'img/wedding.jpg', 'img/special-makeup.jpg', 'img/show-business.jpg']
+        - let hrefs = ['tv', 'movie', 'corporate', 'wedding', 'special-makeup', 'show-business']
         - for (let i = 0; i < 6; i++) {
           .wrapper
             a(href=hrefs[i])
