@@ -5,6 +5,7 @@ const stylus = require('express-stylus');
 const path = require('path');
 const nib = require('nib');
 const app = express();
+const minify = require('express-minify');
 // const https = require('https');
 const publicDir = path.join(__dirname, '/public');
 // const options = {
@@ -20,8 +21,8 @@ app.use(stylus({
     use: [nib()],
     import: ['nib']
 }));
-
 app.use(express.static(publicDir, {maxAge: 604800000 }));
+app.use(minify());
 app.get('http://*',function(req,res){  
     res.redirect('https://kokon.co.ua'+req.url)
 })
