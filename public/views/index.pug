@@ -80,7 +80,7 @@ block content
       hr
       .sms_form
         note Или оставьте свой номер и мы Вам обязательно перезвоним!
-        form(action='/sms' method="POST")#requestCall
+        form#requestCall
           ul
             li
               input(type="text" name="name" placeholder="Имя" pattern='^[a-zA-Zа-яА-ЯІіЇїЄєЫыЪъэЭ ]+$' required)#name
