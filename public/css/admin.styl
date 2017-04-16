@@ -1,0 +1,204 @@
+.login
+    height: 30vh
+    margin: 10vh auto 0 auto
+    text-align: center
+    width: 90vw    
+    @media (min-width: 768px)
+        width: 50vw
+    form
+        input[type="text"],
+        input[type="password"]
+            font-family: 'amsdam'
+            padding: 25px 20px
+            color: #666
+            box-sizing: border-box
+            width: 100%
+            display: block
+            outline: none
+            border: none
+            height: 25px
+            line-height: 25px
+            font-size: 14px
+            border: 1px solid #DDDDDD
+            border-radius: 3px
+            text-align: center
+            @media (min-width: 768px)
+                font-size: 18px
+        input[type="submit"]
+            width 100%
+            height: 51px
+            background: #e1e1e1
+            padding: 10px 20px 10px 20px
+            border-radius: 2px
+            cursor: pointer
+            text-transform: uppercase
+            letter-spacing: 2px
+            border: 0px solid #c5c5c5  
+            border-bottom: 3px solid #c5c5c5        
+            color: #7a7a7a
+            &:focus
+                outline: none
+            &:hover
+                background: #cecece
+                color: #222
+                border-bottom: 3px solid #666
+        input
+            margin: 10px 0        
+[contenteditable]
+    background-color: rgba(0,255,0,.1)
+    &:focus 
+        outline: 0px solid transparent
+        background-color: rgba(255,0,0,.1)
+.numbers.changed:after
+    content: "Изменения сохранены!"
+    position: absolute
+    top: 60px        
+    margin-left: -50px
+    color: rgba(0,255,0,.4)
+    opacity: 1
+    
+.admin-panel
+    text-align: center
+    color: #222
+    ul
+        display: flex
+        // justify-content: space-around
+    form.pictures
+        display: flex
+        flex-direction: column
+        align-items: center
+        & > *
+            margin: 0 0 20px 0
+    input[type="submit"]
+        width max(30vw, 439px)
+        height: 51px
+        background: #e1e1e1
+        padding: 10px 20px 10px 20px
+        border-radius: 2px
+        cursor: pointer
+        text-transform: uppercase
+        letter-spacing: 2px
+        border: 0px solid #c5c5c5  
+        border-bottom: 3px solid #c5c5c5        
+        color: #7a7a7a
+        &:focus
+            outline: none
+        &:hover
+            background: #cecece
+            color: #222
+            border-bottom: 3px solid #666
+    form.upload
+        display: flex
+        flex-direction: column
+        align-items: center
+        padding-bottom: 8vh
+    .sortable
+        list-style: none
+        display: flex
+        // justify-content: space-around
+        flex-wrap: wrap
+        width: 100%
+        padding: 0
+        .thumb
+            width: 7.1vw
+            height: 7.1vw
+            margin: .3vw
+            position: relative
+            cursor: pointer
+            img
+                box-sizing: border-box
+                object-fit: cover
+                width: 100%
+                height: 100%
+
+.custom-file-upload-hidden
+    display none
+    visibility hidden
+    position absolute
+    left -9999px
+
+.custom-file-upload
+    display block
+    width auto
+    font-size 16px
+    margin-top 30px
+    label
+        display block
+        margin-bottom 5px
+
+.file-upload-wrapper
+    position relative
+    margin-bottom 5px
+
+.file-upload-input
+    width max(20vw, 258px)
+    color #fff
+    font-size 16px
+    padding 11px 17px
+    border none
+    background-color #999
+    -moz-transition all 0.2s ease-in
+    -o-transition all 0.2s ease-in
+    -webkit-transition all 0.2s ease-in
+    transition all 0.2s ease-in
+    float left
+    height 51px
+    box-sizing border-box
+
+.file-upload-input:hover, .file-upload-input:focus
+    background-color #cecece
+    outline none
+
+.file-upload-button
+    cursor pointer
+    display inline-block
+    color #fff
+    border-radius: 2px
+    cursor: pointer
+    text-transform: uppercase
+    letter-spacing: 2px
+    text-transform uppercase
+    padding 11px 20px
+    border none
+    margin-left -1px
+    background-color #e1e1e1
+    float left
+    -moz-transition all 0.2s ease-in
+    -o-transition all 0.2s ease-in
+    -webkit-transition all 0.2s ease-in
+    transition all 0.2s ease-in
+    height 51px
+    box-sizing border-box
+    border 0px solid #c5c5c5  
+    border-bottom 3px solid #c5c5c5        
+    color #7a7a7a
+    &:hover
+        background: #cecece
+        color: #222
+        border-bottom: 3px solid #666             
+
+.ui-tabs-anchor
+    outline: none
+.ui-widget    
+    font-family: 'geometria-light'
+.ui-state-default a, .ui-state-default a:link
+    color: #999   
+.ui-state-active a:link    
+    color: #222
+.ui-tabs .ui-tabs-nav li:focus
+    border: none    
+    outline: none    
+.ui-tabs .ui-tabs-nav li:not(.ui-tabs-active):not(.ui-state-hover)
+    background #e5e5e5    
+.ui-widget-header .ui-state-hover:not(.ui-state-active)
+    border: 1px solid #cecece     
+    background: #cecece
+    border-bottom: none
+    a.ui-tabs-anchor
+        color: #222
+.ui-widget-header .ui-state-active.ui-state-hover a.ui-tabs-anchor
+    cursor: default
+.ui-widget-header
+    border: none    
+    background: #d9d9d9
+        

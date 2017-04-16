@@ -6,16 +6,32 @@ const path = require('path');
 const nib = require('nib');
 const app = express();
 const minify = require('express-minify');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 // const https = require('https');
 const publicDir = path.join(__dirname, '/public');
 // const options = {
 //    key  : fs.readFileSync('server.key'),
 //    cert : fs.readFileSync('server.crt')
 // };
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://kokon-admin:kokon.co.ua@ds161210.mlab.com:61210/kokon");
+mongoose.connection.on('error', () => {
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running. ✗');
+  process.exit();
+});
 
 app.set('views', __dirname + '/public/views');
 app.set("view engine", "pug");
 
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: "kokonsecretkey"
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(stylus({
     src: publicDir,
     use: [nib()],

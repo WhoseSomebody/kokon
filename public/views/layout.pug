@@ -32,7 +32,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
     
     
   body
-    header#header
+    header#header(class=login?"compressed static":'')
       a(href="/#i").logo-space.scroll 
         h2.main-title KOKON
         h3.main-subtitle Costume, Makeup & Hairstyle
@@ -53,8 +53,8 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
               a(href="/#prices" data-hover="цены").scroll  цены
       .numbers
         i.fa.fa-mobile
-        .phone +38 067 406 82 44
-        .phone +38 067 985 48 25
+        .phone #{numbers[0]}
+        .phone #{numbers[1]}
     #header-mobile    
       a(href="/").logo-space
         .main-title KOKON
@@ -72,21 +72,22 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
     
     #content
       block content
-    footer
-      .copyright
-        | Copyright © 2017
-        a(href='/')  COCON.CO.UA
-      .social
-        a(href="#" title="Наш YouTube канал")
-          <i class="fa fa-youtube" aria-hidden="true"></i>  
-        a(href="#" title="Наш Facebook профиль")
-          <i class="fa fa-facebook-official" aria-hidden="true"></i>  
-        a(href="#" title="Наш Instagram профиль")
-          <i class="fa fa-instagram" aria-hidden="true"></i>    
-      .logo-space
-        a(href="#")
-          .main-title KOKON
-          small Costume, Makeup & Hairstyle
+    if (!login)  
+      footer
+        .copyright
+          span Copyright © #{(new Date()).getFullYear()}
+          a(href='/')  COCON.CO.UA
+        .social
+          a(href="#" title="Наш YouTube канал")
+            <i class="fa fa-youtube" aria-hidden="true"></i>  
+          a(href="#" title="Наш Facebook профиль")
+            <i class="fa fa-facebook-official" aria-hidden="true"></i>  
+          a(href="#" title="Наш Instagram профиль")
+            <i class="fa fa-instagram" aria-hidden="true"></i>    
+        .logo-space
+          a(href="#")
+            .main-title KOKON
+            small Costume, Makeup & Hairstyle
   script(type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58eccdf6653f20a6")   
   script(type="text/javascript" src="js/scrollreveal.min.js")
   script.
@@ -136,9 +137,9 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
       
       function headerMode() {
         if ($(document).scrollTop() > 147) {
-          $("#header").addClass("compressed");
+          $("#header:not('.static')").addClass("compressed");
         } else {
-          $("#header").removeClass("compressed");
+          $("#header:not('.static')").removeClass("compressed");
         }
       }
       headerMode();
@@ -149,6 +150,15 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
       
       sr.reveal('footer .social');
     
+
+      $('.copyright span').click((event) => {
+        $('.copyright span').click(() => {
+          $('.copyright span').click(() => {
+            window.location.replace('/content-editor')
+            $('.copyright span').off();
+          })
+        })
+      })
     });
     
   script(type="application/ld+json").
@@ -159,7 +169,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="ru")
       "url": "https://kokon.co.ua",
       "contactPoint": [{
         "@type": "ContactPoint",
-        "telephone": "+38(067) 406-82-44",
+        "telephone": "#{numbers[0]}",
         "contactType": "customer service",
         "email": "eva-kazakova@mail.ru"
       }]

@@ -1,0 +1,206 @@
+extends ./layout
+
+block head-link
+    link(rel="stylesheet" type="text/css" href="css/jquery-ui.min.css")
+    link(rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css")
+    link(rel="stylesheet" type="text/css" href="css/admin.css")
+
+block content
+    .admin-panel
+        h2 Панель Администратора
+        #tabs
+            ul 
+                li 
+                    a(href="#tv") Телевидение
+                li 
+                    a(href="#movie") Кино
+                li 
+                    a(href="#corporate") Корпоратив
+                li 
+                    a(href="#wedding") Свадьба
+                li 
+                    a(href="#special-makeup") Спецгрим
+                li 
+                    a(href="#show-business") Шоу-бизнес   
+            each category in categories
+                div(id=category.id)
+                    h3 Упорядочить фото
+                    form(data-category=category.id).pictures
+                        ul.sortable
+                            each url in category.image_urls
+                                li.ui-state-default
+                                    .thumb
+                                        img(src=url).pictures
+                    hr     
+                    h3 Добавить новые фото
+                    form(data-category=category.id).upload
+                        .custom-file-upload
+                            input(type="file" id="file" name="myfiles[]" multiple) 
+                        br
+                        input(type="submit" value="Загрузить фото").save-upload     
+                        br
+                        small *При загрузке все несохраненные изменения будут утеряны                          
+                                                         
+    script(src="js/jquery-ui.min.js")                
+    script.
+        $("#tabs").tabs({active: 0});
+        $( ".sortable" ).sortable({
+            update: (e) => {
+                $.ajax({
+                    type: 'post',
+                    url: '/update-order',
+                    data: {
+                        urls: $.map($(e.target).closest("form").find('li img'), (el)=>{ return $(el).attr('src')}),
+                        category: $(e.target).closest("form").attr('data-category')
+                    },
+                    success: function () {
+                    $($("#" + e.target).closest("form").attr('data-category') + " .sortable").load(location.href + " " + $("#" + e.target).closest("form").attr('data-category'));
+                    }
+                });
+                console.log($.map($(e.target).find('li img'), (el)=>{ return $(el).attr('src')}));
+            }
+        });
+        $('.phone').attr("contenteditable", true).focusout((e)=>{
+            $('.numbers').toggleClass('changed');
+            console.log($.map($(e.target).closest(".numbers").find('.phone'), (el)=>{ return $(el)[0].innerText}))
+            $.ajax({
+                    type: 'post',
+                    url: '/update-numbers',
+                    data: {
+                        numbers: $.map($(e.target).closest(".numbers").find('.phone'), (el)=>{ return $(el)[0].innerText})
+                    },
+                    success: function () {
+                    }
+                });
+            setTimeout(()=>{
+                $('.numbers').toggleClass('changed');
+            },1000)
+        })
+        
+        ;(function($) {
+
+            // Browser supports HTML5 multiple file?
+            var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
+                isIE = /msie/i.test( navigator.userAgent );
+
+            $.fn.customFile = function() {
+
+            return this.each(function() {
+
+                var $file = $(this).addClass('custom-file-upload-hidden'), // the original file input
+                    $wrap = $('<div class="file-upload-wrapper">'),
+                    $input = $('<input type="text" class="file-upload-input" />'),
+                    // Button that will be used in non-IE browsers
+                    $button = $('<button type="button" class="file-upload-button" title="Выбрать новые фото">📤</button>'),
+                    // Hack for IE
+                    $label = $('<label class="file-upload-button" for="'+ $file[0].id +'"  title="Выбрать новые фото">📤</label>');
+
+                // Hide by shifting to the left so we
+                // can still trigger events
+                $file.css({
+                position: 'absolute',
+                left: '-9999px'
+                });
+
+                $wrap.insertAfter( $file )
+                .append( $file, $input, ( isIE ? $label : $button ) );
+
+                // Prevent focus
+                $file.attr('tabIndex', -1);
+                $button.attr('tabIndex', -1);
+
+                $button.click(function () {
+                $file.focus().click(); // Open dialog
+                });
+
+                $file.change(function() {
+
+                var files = [], fileArr, filename;
+
+                // If multiple is supported then extract
+                // all filenames from the file array
+                if ( multipleSupport ) {
+                    fileArr = $file[0].files;
+                    for ( var i = 0, len = fileArr.length; i < len; i++ ) {
+                    files.push( fileArr[i].name );
+                    }
+                    filename = files.join(', ');
+
+                // If not supported then just take the value
+                // and remove the path to just show the filename
+                } else {
+                    filename = $file.val().split('\\').pop();
+                }
+
+                $input.val( filename ) // Set the value
+                    .attr('title', filename) // Show filename in title tootlip
+                    .focus(); // Regain focus
+
+                });
+
+                $input.on({
+                blur: function() { $file.trigger('blur'); },
+                keydown: function( e ) {
+                    if ( e.which === 13 ) { // Enter
+                    if ( !isIE ) { $file.trigger('click'); }
+                    } else if ( e.which === 8 || e.which === 46 ) { // Backspace & Del
+                    // On some browsers the value is read-only
+                    // with this trick we remove the old input and add
+                    // a clean clone with all the original events attached
+                    $file.replaceWith( $file = $file.clone( true ) );
+                    $file.trigger('change');
+                    $input.val('');
+                    } else if ( e.which === 9 ){ // TAB
+                    return;
+                    } else { // All other keys
+                    return false;
+                    }
+                }
+                });
+
+            });
+
+            };
+
+            // Old browser fallback
+            if ( !multipleSupport ) {
+            $( document ).on('change', 'input.customfile', function() {
+
+                var $this = $(this),
+                    // Create a unique ID so we
+                    // can attach the label to the input
+                    uniqId = 'customfile_'+ (new Date()).getTime(),
+                    $wrap = $this.parent(),
+
+                    // Filter empty input
+                    $inputs = $wrap.siblings().find('.file-upload-input')
+                    .filter(function(){ return !this.value }),
+
+                    $file = $('<input type="file" id="'+ uniqId +'" name="'+ $this.attr('name') +'"/>');
+
+                // 1ms timeout so it runs after all other events
+                // that modify the value have triggered
+                setTimeout(function() {
+                // Add a new input
+                if ( $this.val() ) {
+                    // Check for empty fields to prevent
+                    // creating new inputs when changing files
+                    if ( !$inputs.length ) {
+                    $wrap.after( $file );
+                    $file.customFile();
+                    }
+                // Remove and reorganize inputs
+                } else {
+                    $inputs.parent().remove();
+                    // Move the input so it's always last on the list
+                    $wrap.appendTo( $wrap.parent() );
+                    $wrap.find('input').focus();
+                }
+                }, 1);
+
+            });
+            }
+
+        }(jQuery));
+
+        $('input[type=file]').customFile();

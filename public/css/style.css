@@ -281,7 +281,7 @@ header .numbers i {
 @media (min-width: 768px) {
   header .numbers {
     width: 110px;
-    margin: 18px 0 23px 10px;
+    margin: 14px 0 18px 10px;
     padding: 3px 0 0 35px;
     -webkit-background-size: 30px auto;
     -moz-background-size: 30px auto;
@@ -381,7 +381,7 @@ header .numbers i {
 @media (min-width: 992px) {
   #header.compressed .numbers {
     width: 100px;
-    margin: 25px 0 0 0;
+    margin: 16px 0 0 0;
     -webkit-background-size: 35px auto;
     -moz-background-size: 35px auto;
     background-size: 35px auto;
@@ -457,6 +457,13 @@ footer {
 }
 footer .copyright {
   font-size: 12px;
+}
+footer .copyright span {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 footer .copyright a {
   text-decoration: none;
