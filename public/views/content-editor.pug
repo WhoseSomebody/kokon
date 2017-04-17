@@ -30,11 +30,17 @@ block content
                     br
                     form(data-category=category.id).pictures
                         ul.sortable
-                            each url in category.image_urls
+                            each url, ind in category.image_urls
                                 li.ui-state-default
                                     .thumb
-                                        img(src=url data-category=category.id data-featherlight=url).pictures
+                                        img(id=category.id.split('-')[0]+ind data-category=category.id data-featherlight=url src='/img/loading.gif').pictures
                                         a.remove ×
+                                        script(async)
+                                            |let downloadingImage#{category.id.split('-')[0]+ind} = new Image();
+                                            |downloadingImage#{category.id.split('-')[0]+ind}.onload = function(){
+                                            |    $('img##{category.id.split('-')[0]+ind}').attr('src', this.src);   
+                                            |};
+                                            |downloadingImage#{category.id.split('-')[0]+ind}.src = "#{url}";
                     hr     
                     h3 Добавить новые фото
                     form(data-category=category.id enctype="multipart/form-data" method="POST" action='/upload_new' onsubmit="return Validate(this);").upload
