@@ -116,17 +116,20 @@
   background: #e1e1e1;
   padding: 10px 20px 10px 20px;
   border-radius: 2px;
-  cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2px;
   border: 0px solid #c5c5c5;
   border-bottom: 3px solid #c5c5c5;
-  color: #7a7a7a;
+  color: #bababa;
 }
-.admin-panel input[type="submit"]:focus {
+.admin-panel input[type="submit"]:not([disabled]) {
+  color: #7a7a7a;
+  cursor: pointer;
+}
+.admin-panel input[type="submit"]:not([disabled]):focus {
   outline: none;
 }
-.admin-panel input[type="submit"]:hover {
+.admin-panel input[type="submit"]:not([disabled]):hover {
   background: #cecece;
   color: #222;
   border-bottom: 3px solid #666;
@@ -175,6 +178,17 @@
   margin: 0.3vw;
   position: relative;
   cursor: pointer;
+}
+.admin-panel .sortable .thumb .remove {
+  z-index: 100;
+  color: #f00;
+  position: absolute;
+  margin-left: -2vw;
+  font-size: 2vw;
+  margin-top: 0vw;
+  width: 2vw;
+  height: 2vw;
+  background-color: rgba(255,255,255,0.6);
 }
 .admin-panel .sortable .thumb img {
   -webkit-box-sizing: border-box;
@@ -264,6 +278,9 @@
   background: #cecece;
   color: #222;
   border-bottom: 3px solid #666;
+}
+.file-upload-button:focus {
+  outline: none;
 }
 .ui-tabs-anchor {
   outline: none;

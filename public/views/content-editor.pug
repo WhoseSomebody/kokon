@@ -4,7 +4,7 @@ block head-link
     link(rel="stylesheet" type="text/css" href="css/jquery-ui.min.css")
     link(rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css")
     link(rel="stylesheet" type="text/css" href="css/admin.css")
-
+    link(href="css/featherlight.min.css" type="text/css" rel="stylesheet")
 block content
     .admin-panel
         h2 Панель Администратора
@@ -25,24 +25,34 @@ block content
             each category in categories
                 div(id=category.id)
                     h3 Упорядочить фото
+                    small Отменить удаление нельзя!
+                    br
+                    br
                     form(data-category=category.id).pictures
                         ul.sortable
                             each url in category.image_urls
                                 li.ui-state-default
                                     .thumb
-                                        img(src=url).pictures
+                                        img(src=url data-category=category.id data-featherlight=url).pictures
+                                        a.remove ×
                     hr     
                     h3 Добавить новые фото
-                    form(data-category=category.id).upload
+                    form(data-category=category.id enctype="multipart/form-data" method="POST" action='/upload_new' onsubmit="return Validate(this);").upload
+                        input(type="hidden" name="id" value=category.id)                    
                         .custom-file-upload
-                            input(type="file" id="file" name="myfiles[]" multiple) 
+                            input(type="file" id="file" name="myfiles[]" multiple accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|images/*") 
                         br
-                        input(type="submit" value="Загрузить фото").save-upload     
-                        br
-                        small *При загрузке все несохраненные изменения будут утеряны                          
+                        input(type="submit" value="Загрузить фото" disabled).save-upload                            
                                                          
-    script(src="js/jquery-ui.min.js")                
+    script(src="js/jquery-ui.min.js")  
+    script(src="js/featherlight.min.js" type="text/javascript" charset="utf-8")        
     script.
+        $.featherlight.defaults.openSpeed = 10;
+        $.featherlight.defaults.closeSpeed = 10;
+        $.featherlight.defaults.openTrigger = "dblclick";
+        $.featherlight.defaults.contentFilters = ["image"];
+        $.featherlight.defaults.targetAttr = 'data-featherlight';
+        
         $("#tabs").tabs({active: 0});
         $( ".sortable" ).sortable({
             update: (e) => {
@@ -57,9 +67,25 @@ block content
                     $($("#" + e.target).closest("form").attr('data-category') + " .sortable").load(location.href + " " + $("#" + e.target).closest("form").attr('data-category'));
                     }
                 });
-                console.log($.map($(e.target).find('li img'), (el)=>{ return $(el).attr('src')}));
+                //- console.log($.map($(e.target).find('li img'), (el)=>{ return $(el).attr('src')}));
             }
         });
+        $(".remove").click((e)=>{
+            $.when($($(e.target).closest("li")).remove()).then((res) =>{
+                 $.ajax({
+                    type: 'post',
+                    url: '/update-order',
+                    data: {
+                        urls: $.map($("form.pictures[data-category="+$(res).find('img').attr('data-category')+"]").find('li img'), (el)=>{ return $(el).attr('src')}),
+                        category: $(res).find('img').attr('data-category'),
+                        toRemove: $(res).find('img').attr('src')
+                    },
+                    success: function () {
+                    }
+
+                });
+            })
+        })
         $('.phone').attr("contenteditable", true).focusout((e)=>{
             $('.numbers').toggleClass('changed');
             console.log($.map($(e.target).closest(".numbers").find('.phone'), (el)=>{ return $(el)[0].innerText}))
@@ -110,7 +136,7 @@ block content
                 $button.attr('tabIndex', -1);
 
                 $button.click(function () {
-                $file.focus().click(); // Open dialog
+                    $file.focus().click(); // Open dialog
                 });
 
                 $file.change(function() {
@@ -150,6 +176,8 @@ block content
                     $file.replaceWith( $file = $file.clone( true ) );
                     $file.trigger('change');
                     $input.val('');
+                    $('.custom-file-upload input[type=file]').val('').change();
+                    //- $('.custom-file-upload input[type=file]').change()
                     } else if ( e.which === 9 ){ // TAB
                     return;
                     } else { // All other keys
@@ -202,5 +230,46 @@ block content
             }
 
         }(jQuery));
-
+        
         $('input[type=file]').customFile();
+
+        $('.custom-file-upload input[type=file]').on("change",
+            (e)=>{
+                if ($($(e.target).closest("form").find('.custom-file-upload input[type=file]')).val()!="") {
+                   $(e.target).closest("form").find(".save-upload").removeAttr("disabled");
+                   $(".upload input[type=submit]:not([disabled])").click((e)=>{
+                         $(".upload input[type=submit]:not([disabled])").innerText = "Загрузка..."
+                    })
+                } else {
+                    $(e.target).closest("form").find(".save-upload").attr("disabled", true)
+                }
+            }
+        );
+        var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".png"];    
+        function Validate(oForm) {
+            var arrInputs = oForm.getElementsByTagName("input");
+            for (var i = 0; i < arrInputs.length; i++) {
+                var oInput = arrInputs[i];
+                if (oInput.type == "file") {
+                    var sFileName = oInput.value;
+                    if (sFileName.length > 0) {
+                        var blnValid = false;
+                        for (var j = 0; j < _validFileExtensions.length; j++) {
+                            var sCurExtension = _validFileExtensions[j];
+                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                blnValid = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!blnValid) {
+                            alert("Извините, но " + sFileName.split("\\").pop() + " не картинка, разрешены только картинки с расширениями: " + _validFileExtensions.join(", "));
+                            return false;
+                        }
+                    }
+                }
+            }
+        
+            return true;
+        }
+  

@@ -1,10 +1,13 @@
 const router = require('express').Router();
-const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const http = require('http');
 const parseString = require('xml2js').parseString;
-const Galery = require('../models/galery');
+const formidable = require('formidable');
+const util = require('util');
+const fs   = require('fs-extra');
+const sharp   = require('sharp');
+const Gallery = require('../models/gallery');
 const Info = require('../models/info');
 
 const desc = `Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции
@@ -47,7 +50,7 @@ router.post('/sms', bodyParser.urlencoded({ extended: false }), (req, res) => {
         path: '/api/api.php',
         method: 'POST',
         headers: {
-          'Authorization': 'Basic MzgwOTU2MjUxNTI3Omtva29uLmNvLnVh',
+          'Authorization': 'Basic MzgwOTU2MjUxNTI3Om"/img/gallery/tv/tva29uLmNvLnVh',
           'Content-Type': 'text/xml',
           'Accept': 'text/xml'
         }
@@ -79,7 +82,7 @@ function send_balance(number) {
     path: '/api/api.php',
     method: 'POST',
     headers: {
-      'Authorization': 'Basic MzgwOTU2MjUxNTI3Omtva29uLmNvLnVh',
+      'Authorization': 'Basic MzgwOTU2MjUxNTI3Om"/img/gallery/tv/tva29uLmNvLnVh',
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -121,20 +124,20 @@ function send_balance(number) {
 }
 
 router.get(['/tv', '/movie', '/corporate', '/wedding', '/special-makeup', '/show-business'], (req, res) => {
-  Galery.findOne({id: req.path.split("/")[1]},  (err, galery) => {
+  Gallery.findOne({id: req.path.split("/")[1]},  (err, gallery) => {
     if (err) {
       console.log(err);
       res.status(404);
     }
-    let name = galery.name,
-        description = galery.description,
-        title = galery.pageTitle,
-        metaDescription = galery.metaDescription,
-        keywords = galery.keywords;
+    let name = gallery.name,
+        description = gallery.description,
+        title = gallery.pageTitle,
+        metaDescription = gallery.metaDescription,
+        keywords = gallery.keywords;
     let category_obj = {
       name: name,
       description: description,
-      img_urls: galery.image_urls
+      img_urls: gallery.image_urls
     }
     Info.findOne({}, (err,info) => {
       if (err) {
@@ -189,13 +192,13 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/content-editor', (req, res) => {
-  if (!req.session.login) {
+  if (req.session.login) {
     Info.findOne({}, (err,info) => {
       if (err) {
         console.log(err);
         res.status(500);
       }
-      Galery.find({}, (err, categories) => {
+      Gallery.find({}, (err, categories) => {
         if (err) {
           console.log(err);
           res.status(500);
@@ -216,7 +219,12 @@ router.get('/content-editor', (req, res) => {
 })
 
 router.post('/update-order', (req, res) => {
-  Galery.findOne({id:req.body.category}, (err, category) => {
+  if (req.body.toRemove) {
+    if (fs.existsSync("public/" + req.body.toRemove)) {
+       fs.unlinkSync("public/" + req.body.toRemove);
+    }
+  }
+  Gallery.findOne({id:req.body.category}, (err, category) => {
         if (err) {
           console.log(err);
           res.status(500);
@@ -233,8 +241,6 @@ router.post('/update-order', (req, res) => {
 })
 
 router.post('/update-numbers', (req, res) => {
-  console.log(req.body);
-  
    Info.findOne({}, (err,info) => {
       if (err) {
         console.log(err);
@@ -247,10 +253,75 @@ router.post('/update-numbers', (req, res) => {
           res.status(500);
         }
       })
-      console.log(info);
+      // console.log(info);
       
       res.status(200);
     });
 })
 
+router.post('/upload_new', (req, res) => {
+  let category;
+  let form = new formidable.IncomingForm();
+  form.multiples = true;
+  form.parse(req, function(err, fields, files) {
+    category = fields.id;
+    // res.writeHead(200, {'content-type': 'text/plain'});
+    // res.write('received upload:\n\n');
+    // res.end(util.inspect({fields: fields, files: files}));
+    
+  });
+
+  form.on('field',function(name,value){
+
+  });
+
+
+
+  form.on('end', function(fields, files) {
+    Gallery.findOne({id: category},  (err, Gallery) => {
+      if (err) {
+        console.log(err);
+        res.status(404);
+      }
+      for(var x in this.openedFiles)
+      {
+        let temp_path = this.openedFiles[x].path
+            file_name = this.openedFiles[x].name,
+            new_location = 'public/img/gallery/' + category + "/";
+        if (file_name.split('.').pop() != "jpg") {
+          file_name = file_name.split('.')[0] + ".jpg";
+        }
+
+        Gallery.image_urls.push(new_location.split('/').slice(1).join("/") + '/' + file_name)    
+
+        sharp(temp_path)
+          .withoutEnlargement(true)
+          .resize(1200,1200)
+          .max()
+          .toFormat('jpeg', {
+            optimizeScans: true
+          })
+          .toFile(new_location + file_name, (err, info) => {console.log(info)});
+
+        // fs.copy(temp_path, new_location + file_name, function(err) {  
+        //   if (err) {
+        //     console.log(err);
+        //   }
+        // });//fscopy
+      }//for loop
+      Gallery.save((err, gal)=>{
+        if (err) {
+          console.log(err);
+        }
+        // console.log(gal);
+        res.redirect('back');
+      })
+      
+    })
+        
+  });//form end
+  // res.send('Done!!');
+})
+
 module.exports = router;
+
