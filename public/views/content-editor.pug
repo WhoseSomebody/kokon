@@ -27,6 +27,8 @@ block content
                     h3 Упорядочить фото
                     small Отменить удаление нельзя!
                     br
+                    a(href="/"+category.id) Перейти в категорию "#{category.name}"
+                    br
                     br
                     form(data-category=category.id).pictures
                         ul.sortable
