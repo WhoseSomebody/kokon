@@ -50,7 +50,7 @@ router.post('/sms', bodyParser.urlencoded({ extended: false }), (req, res) => {
         path: '/api/api.php',
         method: 'POST',
         headers: {
-          'Authorization': 'Basic MzgwOTU2MjUxNTI3Om"/img/gallery/tv/tva29uLmNvLnVh',
+          'Authorization': 'Basic secureCode',
           'Content-Type': 'text/xml',
           'Accept': 'text/xml'
         }
@@ -82,7 +82,7 @@ function send_balance(number) {
     path: '/api/api.php',
     method: 'POST',
     headers: {
-      'Authorization': 'Basic MzgwOTU2MjUxNTI3Om"/img/gallery/tv/tva29uLmNvLnVh',
+      'Authorization': 'Basic secureCode',
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -170,7 +170,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  if (req.body.login == "kokon-admin" && req.body.password == "kokon@studio"){
+  if (req.body.login == "LOGIN" && req.body.password == "PASSWORD"){
     req.session.login = true;
     req.session.wrongLogin = false;    
     res.redirect('/content-editor');

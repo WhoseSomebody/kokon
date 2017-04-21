@@ -16,7 +16,7 @@ const publicDir = path.join(__dirname, '/public');
 //    cert : fs.readFileSync('server.crt')
 // };
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://kokon-admin:kokon.co.ua@ds161210.mlab.com:61210/kokon");
+mongoose.connect("mongodb://CONNECTION_LINK");
 mongoose.connection.on('error', () => {
   console.log('%s MongoDB connection error. Please make sure MongoDB is running. ✗');
   process.exit();
